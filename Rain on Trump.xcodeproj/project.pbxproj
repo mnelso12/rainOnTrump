@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A5D898E1CAD847800EFAA02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D898D1CAD847800EFAA02 /* main.m */; };
+		5A5D89911CAD847800EFAA02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D89901CAD847800EFAA02 /* AppDelegate.m */; };
+		5A5D89941CAD847800EFAA02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D89931CAD847800EFAA02 /* ViewController.m */; };
+		5A5D89971CAD847900EFAA02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89951CAD847900EFAA02 /* Main.storyboard */; };
+		5A5D89991CAD847900EFAA02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89981CAD847900EFAA02 /* Images.xcassets */; };
+		5A5D899C1CAD847900EFAA02 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D899A1CAD847900EFAA02 /* LaunchScreen.xib */; };
+		5A5D89A81CAD847900EFAA02 /* Rain_on_TrumpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D89A71CAD847900EFAA02 /* Rain_on_TrumpTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A5D89A21CAD847900EFAA02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A5D89801CAD847700EFAA02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A5D89871CAD847800EFAA02;
+			remoteInfo = "Rain on Trump";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5A5D89881CAD847800EFAA02 /* Rain on Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rain on Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5D898C1CAD847800EFAA02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A5D898D1CAD847800EFAA02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5A5D898F1CAD847800EFAA02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5A5D89901CAD847800EFAA02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5A5D89921CAD847800EFAA02 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5A5D89931CAD847800EFAA02 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5A5D89961CAD847900EFAA02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5A5D89981CAD847900EFAA02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5A5D899B1CAD847900EFAA02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5A5D89A11CAD847900EFAA02 /* Rain on TrumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rain on TrumpTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5D89A61CAD847900EFAA02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A5D89A71CAD847900EFAA02 /* Rain_on_TrumpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rain_on_TrumpTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A5D89851CAD847800EFAA02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A5D899E1CAD847900EFAA02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A5D897F1CAD847700EFAA02 = {
+			isa = PBXGroup;
+			children = (
+				5A5D898A1CAD847800EFAA02 /* Rain on Trump */,
+				5A5D89A41CAD847900EFAA02 /* Rain on TrumpTests */,
+				5A5D89891CAD847800EFAA02 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A5D89891CAD847800EFAA02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A5D89881CAD847800EFAA02 /* Rain on Trump.app */,
+				5A5D89A11CAD847900EFAA02 /* Rain on TrumpTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A5D898A1CAD847800EFAA02 /* Rain on Trump */ = {
+			isa = PBXGroup;
+			children = (
+				5A5D898F1CAD847800EFAA02 /* AppDelegate.h */,
+				5A5D89901CAD847800EFAA02 /* AppDelegate.m */,
+				5A5D89921CAD847800EFAA02 /* ViewController.h */,
+				5A5D89931CAD847800EFAA02 /* ViewController.m */,
+				5A5D89951CAD847900EFAA02 /* Main.storyboard */,
+				5A5D89981CAD847900EFAA02 /* Images.xcassets */,
+				5A5D899A1CAD847900EFAA02 /* LaunchScreen.xib */,
+				5A5D898B1CAD847800EFAA02 /* Supporting Files */,
+			);
+			path = "Rain on Trump";
+			sourceTree = "<group>";
+		};
+		5A5D898B1CAD847800EFAA02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A5D898C1CAD847800EFAA02 /* Info.plist */,
+				5A5D898D1CAD847800EFAA02 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A5D89A41CAD847900EFAA02 /* Rain on TrumpTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A5D89A71CAD847900EFAA02 /* Rain_on_TrumpTests.m */,
+				5A5D89A51CAD847900EFAA02 /* Supporting Files */,
+			);
+			path = "Rain on TrumpTests";
+			sourceTree = "<group>";
+		};
+		5A5D89A51CAD847900EFAA02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A5D89A61CAD847900EFAA02 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A5D89871CAD847800EFAA02 /* Rain on Trump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A5D89AB1CAD847900EFAA02 /* Build configuration list for PBXNativeTarget "Rain on Trump" */;
+			buildPhases = (
+				5A5D89841CAD847800EFAA02 /* Sources */,
+				5A5D89851CAD847800EFAA02 /* Frameworks */,
+				5A5D89861CAD847800EFAA02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Rain on Trump";
+			productName = "Rain on Trump";
+			productReference = 5A5D89881CAD847800EFAA02 /* Rain on Trump.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5A5D89A01CAD847900EFAA02 /* Rain on TrumpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A5D89AE1CAD847900EFAA02 /* Build configuration list for PBXNativeTarget "Rain on TrumpTests" */;
+			buildPhases = (
+				5A5D899D1CAD847900EFAA02 /* Sources */,
+				5A5D899E1CAD847900EFAA02 /* Frameworks */,
+				5A5D899F1CAD847900EFAA02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A5D89A31CAD847900EFAA02 /* PBXTargetDependency */,
+			);
+			name = "Rain on TrumpTests";
+			productName = "Rain on TrumpTests";
+			productReference = 5A5D89A11CAD847900EFAA02 /* Rain on TrumpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A5D89801CAD847700EFAA02 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Madelyn Nelson";
+				TargetAttributes = {
+					5A5D89871CAD847800EFAA02 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					5A5D89A01CAD847900EFAA02 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 5A5D89871CAD847800EFAA02;
+					};
+				};
+			};
+			buildConfigurationList = 5A5D89831CAD847700EFAA02 /* Build configuration list for PBXProject "Rain on Trump" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A5D897F1CAD847700EFAA02;
+			productRefGroup = 5A5D89891CAD847800EFAA02 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A5D89871CAD847800EFAA02 /* Rain on Trump */,
+				5A5D89A01CAD847900EFAA02 /* Rain on TrumpTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A5D89861CAD847800EFAA02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5D89971CAD847900EFAA02 /* Main.storyboard in Resources */,
+				5A5D899C1CAD847900EFAA02 /* LaunchScreen.xib in Resources */,
+				5A5D89991CAD847900EFAA02 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A5D899F1CAD847900EFAA02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A5D89841CAD847800EFAA02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5D89941CAD847800EFAA02 /* ViewController.m in Sources */,
+				5A5D89911CAD847800EFAA02 /* AppDelegate.m in Sources */,
+				5A5D898E1CAD847800EFAA02 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A5D899D1CAD847900EFAA02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5D89A81CAD847900EFAA02 /* Rain_on_TrumpTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A5D89A31CAD847900EFAA02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A5D89871CAD847800EFAA02 /* Rain on Trump */;
+			targetProxy = 5A5D89A21CAD847900EFAA02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5A5D89951CAD847900EFAA02 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A5D89961CAD847900EFAA02 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5A5D899A1CAD847900EFAA02 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A5D899B1CAD847900EFAA02 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5A5D89A91CAD847900EFAA02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A5D89AA1CAD847900EFAA02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A5D89AC1CAD847900EFAA02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Rain on Trump/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5A5D89AD1CAD847900EFAA02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Rain on Trump/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5A5D89AF1CAD847900EFAA02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Rain on TrumpTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rain on Trump.app/Rain on Trump";
+			};
+			name = Debug;
+		};
+		5A5D89B01CAD847900EFAA02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Rain on TrumpTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rain on Trump.app/Rain on Trump";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A5D89831CAD847700EFAA02 /* Build configuration list for PBXProject "Rain on Trump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A5D89A91CAD847900EFAA02 /* Debug */,
+				5A5D89AA1CAD847900EFAA02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A5D89AB1CAD847900EFAA02 /* Build configuration list for PBXNativeTarget "Rain on Trump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A5D89AC1CAD847900EFAA02 /* Debug */,
+				5A5D89AD1CAD847900EFAA02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5A5D89AE1CAD847900EFAA02 /* Build configuration list for PBXNativeTarget "Rain on TrumpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A5D89AF1CAD847900EFAA02 /* Debug */,
+				5A5D89B01CAD847900EFAA02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A5D89801CAD847700EFAA02 /* Project object */;
+}
