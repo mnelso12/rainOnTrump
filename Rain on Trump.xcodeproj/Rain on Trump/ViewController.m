@@ -22,12 +22,9 @@
         // watch for collisions
         if (CGRectIntersectsRect(iv.frame, trump.frame))
         {
-            [iv setImage:[UIImage imageNamed:@"fire2.jpg"]];
-            //iv.hidden = YES;
+            iv.hidden = YES;
             NSLog(@"Collision");
         }
-        
-        if (iv.image)
         
         // make them fall
         CGPoint oldCenter = iv.center;

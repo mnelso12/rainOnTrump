@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Rain on Trump">
+   </FileRef>
+   <FileRef
       location = "self:Rain on Trump.xcodeproj">
    </FileRef>
 </Workspace>

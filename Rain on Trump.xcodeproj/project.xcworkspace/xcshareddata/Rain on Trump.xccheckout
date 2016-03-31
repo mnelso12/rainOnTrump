@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FF93A7F9-A1E1-4013-8144-80CFDDBB8BC9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BFF7569192076460AF48406AB09D6BC57C67A1BB</key>
+		<string>github.com:mnelso12/rainOnTrump.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Rain on Trump.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BFF7569192076460AF48406AB09D6BC57C67A1BB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:mnelso12/rainOnTrump.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BFF7569192076460AF48406AB09D6BC57C67A1BB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BFF7569192076460AF48406AB09D6BC57C67A1BB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Rain%20on%20Trump</string>
+		</dict>
+	</array>
+</dict>
+</plist>
