@@ -22,12 +22,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trump11.png" translatesAutoresizingMaskIntoConstraints="NO" id="ltM-hC-QWJ">
                                 <rect key="frame" x="0.0" y="263" width="375" height="271"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k96-yo-dcv">
+                                <rect key="frame" x="25" y="28" width="325" height="52"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="33"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cloud" destination="8e2-Ym-8zj" id="dSa-e2-qYq"/>
+                        <outlet property="countLabel" destination="k96-yo-dcv" id="HCg-vG-imd"/>
                         <outlet property="trump" destination="ltM-hC-QWJ" id="TzT-Wv-Haj"/>
                     </connections>
                 </viewController>

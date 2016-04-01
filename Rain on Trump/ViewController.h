@@ -11,6 +11,9 @@
 
 @interface ViewController : UIViewController
 {
+    int count;
+    IBOutlet UILabel *countLabel;
+    
     IBOutlet UIImageView *trump;
     //IBOutlet UIImageView *hillary;
     IBOutlet UIImageView *cloud;

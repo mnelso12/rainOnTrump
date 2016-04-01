@@ -166,6 +166,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
     UITouch *myTouch = [[event allTouches] anyObject];
     
     UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hillary1.jpg"]];
@@ -177,7 +178,14 @@
     [hillaryStates addObject:[NSNumber numberWithInt:0]]; // 0 = hillary, 1 = collision/fire, >5 = hidden
     [self.view bringSubviewToFront:cloud];
     
-
+    count++;
+    [countLabel setText:[NSString stringWithFormat:@"%i",count]];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", count] forKey:@"score"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.view addSubview:countLabel];
+    [self.view bringSubviewToFront:countLabel];
     
     //hillary.center = [myTouch locationInView:self.view];
     [self applyHillarySize];
@@ -242,6 +250,18 @@
     NSString *soundPath5 = [[NSBundle mainBundle] pathForResource:@"smallSound3" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath5], &(sound1));
     
+    
+    if (![[NSUserDefaults standardUserDefaults] stringForKey:@"score"])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"score"];
+        [countLabel setText:@"0"];
+        count = 0;
+    }
+    else
+    {
+        count = [[[NSUserDefaults standardUserDefaults] stringForKey:@"score"] intValue];
+        [countLabel setText:[NSString stringWithFormat:@"%i", count]];
+    }
 
 
     trumpState = 0;
