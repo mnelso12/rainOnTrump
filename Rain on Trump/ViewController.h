@@ -27,6 +27,10 @@
     
     SystemSoundID grunt1;
     SystemSoundID grunt2;
+    SystemSoundID sound1;
+    SystemSoundID sound2;
+    SystemSoundID sound3;
+
 }
 
 

@@ -49,17 +49,17 @@
             {
                 NSLog(@"playing sound!");
                 int randNum = arc4random_uniform(100);
-                if (randNum > 93)
+                if (randNum > 75)
                 {
-                   AudioServicesPlaySystemSound(grunt2);
+                   AudioServicesPlaySystemSound(grunt1);
                 }
-                else if (randNum > 80)
+                else if (randNum > 40)
                 {
                     AudioServicesPlaySystemSound(grunt2);
                 }
                 else
                 {
-                    AudioServicesPlaySystemSound(grunt1);
+                    AudioServicesPlaySystemSound(sound2);
                 }
                     
                 
@@ -235,6 +235,14 @@
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
     NSString *soundPath2 = [[NSBundle mainBundle] pathForResource:@"grunt2-2" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath2], &(grunt2));
+    NSString *soundPath3 = [[NSBundle mainBundle] pathForResource:@"smallSound1" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath3], &(sound1));
+    NSString *soundPath4 = [[NSBundle mainBundle] pathForResource:@"smallSound2" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath4], &(sound2));
+    NSString *soundPath5 = [[NSBundle mainBundle] pathForResource:@"smallSound3" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath5], &(sound1));
+    
+
 
     trumpState = 0;
     hillaryScale = 1.;
