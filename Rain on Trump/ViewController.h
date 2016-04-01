@@ -14,7 +14,10 @@
     //IBOutlet UIImageView *hillary;
     IBOutlet UIImageView *cloud;
     
+    int trumpState; 
+    
     NSMutableArray *hillaries;
+    NSMutableArray *hillaryStates;
     
     NSTimer *timer;
     NSTimer *sizeTimer;

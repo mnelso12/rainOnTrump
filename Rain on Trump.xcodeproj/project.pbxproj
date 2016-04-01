@@ -20,6 +20,8 @@
 		5A5D89B81CAD9FB200EFAA02 /* cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89B71CAD9FB200EFAA02 /* cloud1.png */; };
 		5A5D89BA1CADA80A00EFAA02 /* fire1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89B91CADA80A00EFAA02 /* fire1.jpg */; };
 		5A5D89BC1CADAAEE00EFAA02 /* fire2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */; };
+		5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BD1CADEC6200EFAA02 /* trump10.png */; };
+		5A5D89C01CADEC7000EFAA02 /* trump11.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BF1CADEC7000EFAA02 /* trump11.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		5A5D89B71CAD9FB200EFAA02 /* cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud1.png; sourceTree = "<group>"; };
 		5A5D89B91CADA80A00EFAA02 /* fire1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fire1.jpg; path = "Rain on TrumpTests/fire1.jpg"; sourceTree = SOURCE_ROOT; };
 		5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fire2.jpg; sourceTree = "<group>"; };
+		5A5D89BD1CADEC6200EFAA02 /* trump10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump10.png; sourceTree = "<group>"; };
+		5A5D89BF1CADEC7000EFAA02 /* trump11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump11.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 				5A5D89951CAD847900EFAA02 /* Main.storyboard */,
 				5A5D89B71CAD9FB200EFAA02 /* cloud1.png */,
 				5A5D89B51CAD8F5D00EFAA02 /* HillaryObj.h */,
+				5A5D89BD1CADEC6200EFAA02 /* trump10.png */,
+				5A5D89BF1CADEC7000EFAA02 /* trump11.png */,
 				5A5D89B31CAD87F600EFAA02 /* hillary1.jpg */,
 				5A5D89B91CADA80A00EFAA02 /* fire1.jpg */,
 				5A5D89B11CAD862800EFAA02 /* trump1.jpg */,
@@ -225,6 +231,8 @@
 				5A5D89BC1CADAAEE00EFAA02 /* fire2.jpg in Resources */,
 				5A5D89B41CAD87F600EFAA02 /* hillary1.jpg in Resources */,
 				5A5D89991CAD847900EFAA02 /* Images.xcassets in Resources */,
+				5A5D89C01CADEC7000EFAA02 /* trump11.png in Resources */,
+				5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
