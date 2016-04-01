@@ -19,7 +19,7 @@
 {
     NSMutableArray *toUpdate = [[NSMutableArray alloc] init];
     
-    NSLog(@"trumpState = %i", trumpState);
+    //NSLog(@"trumpState = %i", trumpState);
     
     //NSLog(@"hillary array size: %lu", [hillaries count]);
     int oldCount = (int)[hillaries count];
@@ -39,12 +39,20 @@
         {
             [iv setImage:[UIImage imageNamed:@"fire2.jpg"]];
             NSNumber *prevState = [hillaryStates objectAtIndex:i];
-            int prevStateInt = (int)prevState;
+            int prevStateInt = [prevState intValue];
             prevStateInt++;
+            //NSLog(@"prev state part: %i", prevStateInt);
+            //NSLog(@"2 in nsnumber form: %@", [NSNumber numberWithInt:2]);
+            if (prevStateInt == 1)
+            {
+                NSLog(@"playing sound!");
+                AudioServicesPlaySystemSound(grunt2);
+            }
             [hillaryStates setObject:[NSNumber numberWithInt:prevStateInt] atIndexedSubscript:i];
             trumpState = 1;
             
-            AudioServicesPlaySystemSound(grunt1);
+            
+            //AudioServicesPlaySystemSound(grunt1);
             //NSLog(@"Collision");
         }
         else if ((int)[hillaryStates objectAtIndex:i] >= 5) // when fire goes out
@@ -60,10 +68,12 @@
         [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+3)];
     }
     
+    
     if (trumpState >= 1)
     {
         trumpState++;
     }
+ 
     
     [self.view bringSubviewToFront:trump];
     
@@ -205,8 +215,11 @@
     
     [self.view setBackgroundColor:[UIColor blackColor]];
     
-    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &(grunt1));
+    NSString *soundPath1 = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
+    NSString *soundPath2 = [[NSBundle mainBundle] pathForResource:@"grunt2" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath2], &(grunt2));
+
     trumpState = 0;
     hillaryScale = 1.;
     hillaries = [[NSMutableArray alloc] initWithObjects: nil];

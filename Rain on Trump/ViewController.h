@@ -26,6 +26,7 @@
     float hillaryScale;
     
     SystemSoundID grunt1;
+    SystemSoundID grunt2;
 }
 
 
