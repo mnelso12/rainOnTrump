@@ -22,6 +22,7 @@
 		5A5D89BC1CADAAEE00EFAA02 /* fire2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */; };
 		5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BD1CADEC6200EFAA02 /* trump10.png */; };
 		5A5D89C01CADEC7000EFAA02 /* trump11.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BF1CADEC7000EFAA02 /* trump11.png */; };
+		5A5D89C21CAE094400EFAA02 /* grunt1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89C11CAE094400EFAA02 /* grunt1.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fire2.jpg; sourceTree = "<group>"; };
 		5A5D89BD1CADEC6200EFAA02 /* trump10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump10.png; sourceTree = "<group>"; };
 		5A5D89BF1CADEC7000EFAA02 /* trump11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump11.png; sourceTree = "<group>"; };
+		5A5D89C11CAE094400EFAA02 /* grunt1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt1.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				5A5D89901CAD847800EFAA02 /* AppDelegate.m */,
 				5A5D89921CAD847800EFAA02 /* ViewController.h */,
 				5A5D89931CAD847800EFAA02 /* ViewController.m */,
+				5A5D89C11CAE094400EFAA02 /* grunt1.wav */,
 				5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */,
 				5A5D89951CAD847900EFAA02 /* Main.storyboard */,
 				5A5D89B71CAD9FB200EFAA02 /* cloud1.png */,
@@ -228,6 +231,7 @@
 				5A5D89B81CAD9FB200EFAA02 /* cloud1.png in Resources */,
 				5A5D899C1CAD847900EFAA02 /* LaunchScreen.xib in Resources */,
 				5A5D89B21CAD862800EFAA02 /* trump1.jpg in Resources */,
+				5A5D89C21CAE094400EFAA02 /* grunt1.wav in Resources */,
 				5A5D89BC1CADAAEE00EFAA02 /* fire2.jpg in Resources */,
 				5A5D89B41CAD87F600EFAA02 /* hillary1.jpg in Resources */,
 				5A5D89991CAD847900EFAA02 /* Images.xcassets in Resources */,

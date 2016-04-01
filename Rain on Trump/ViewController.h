@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController : UIViewController
 {
@@ -23,6 +24,8 @@
     NSTimer *sizeTimer;
 
     float hillaryScale;
+    
+    SystemSoundID grunt1;
 }
 
 
