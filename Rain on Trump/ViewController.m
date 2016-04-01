@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <stdlib.h> // since when does this exist
+
 
 @interface ViewController ()
 
@@ -46,7 +48,21 @@
             if (prevStateInt == 1)
             {
                 NSLog(@"playing sound!");
-                AudioServicesPlaySystemSound(grunt2);
+                int randNum = arc4random_uniform(100);
+                if (randNum > 93)
+                {
+                   AudioServicesPlaySystemSound(grunt2);
+                }
+                else if (randNum > 80)
+                {
+                    AudioServicesPlaySystemSound(grunt2);
+                }
+                else
+                {
+                    AudioServicesPlaySystemSound(grunt1);
+                }
+                    
+                
             }
             [hillaryStates setObject:[NSNumber numberWithInt:prevStateInt] atIndexedSubscript:i];
             trumpState = 1;
@@ -90,7 +106,7 @@
 
 - (void)updateTrump
 {
-    if (trumpState == 0 || trumpState > 20)
+    if (trumpState == 0 || trumpState > 14)
     {
         trumpState = 0;
         [trump setImage:[UIImage imageNamed:@"trump11.png"]];
@@ -217,7 +233,7 @@
     
     NSString *soundPath1 = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
-    NSString *soundPath2 = [[NSBundle mainBundle] pathForResource:@"grunt2" ofType:@"wav"];
+    NSString *soundPath2 = [[NSBundle mainBundle] pathForResource:@"grunt2-2" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath2], &(grunt2));
 
     trumpState = 0;
