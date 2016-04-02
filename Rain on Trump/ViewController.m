@@ -45,7 +45,7 @@
         UIImageView *iv = [hillaries objectAtIndex:i];
       
         //if (CGRectIntersectsRect(iv.frame, trump.frame)) // collision, make/keep fire and count fire
-        if (CGRectIntersectsRect(iv.frame, trumpOutline1.frame) || CGRectIntersectsRect(iv.frame, trumpOutline2.frame))
+        if (CGRectIntersectsRect(iv.frame, trumpOutline1.frame) || CGRectIntersectsRect(iv.frame, trumpOutline2.frame) || CGRectIntersectsRect(iv.frame, trumpOutline3.frame))
         {
             [iv setImage:[UIImage imageNamed:@"fire2.jpg"]];
             NSNumber *prevState = [hillaryStates objectAtIndex:i];
@@ -225,7 +225,10 @@
 
 - (void)increaseHillarySize
 {
-    hillaryScale += .25;
+    if (hillaryScale < 2.75) // cap because Ryan broke it
+    {
+        hillaryScale += .25;
+    }
 }
 
 - (void)applyHillarySize
@@ -292,10 +295,12 @@
     
     // make trump outline uiviews
     
-    trumpOutline1 = [[UIView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen*.42, widthOfScreen, trumpRatio*widthOfScreen*.42)]; // shoulders
+    trumpOutline1 = [[UIView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen*.38, widthOfScreen*.5, trumpRatio*widthOfScreen*.38)]; // left shoulder
+    trumpOutline3 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5, heightOfScreen-50-trumpRatio*widthOfScreen*.28, widthOfScreen*.5, trumpRatio*widthOfScreen*.28)]; // right shoulder
     trumpOutline2 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5 - 60, heightOfScreen-50-trumpRatio*widthOfScreen, 120, trumpRatio*widthOfScreen*.5)]; // head
     [self.view addSubview:trumpOutline1];
     [self.view addSubview:trumpOutline2];
+    [self.view addSubview:trumpOutline3];
     
     
     // make count label work
