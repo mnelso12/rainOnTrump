@@ -24,23 +24,13 @@
 - (void)collision
 {
     NSMutableArray *toUpdate = [[NSMutableArray alloc] init];
-    //int hasCollision = 0;
     
     //NSLog(@"trumpState = %i", trumpState);
-    
     //NSLog(@"hillary array size: %lu", [hillaries count]);
-    int oldCount = (int)[hillaries count];
-    
     //NSLog(@"hillary states: %@", [hillaryStates description]);
     
     for (int i=0; i<[hillaries count]; i++)
     {
-        //hasCollision = 0;
-        if ([hillaries count] != oldCount)
-        {
-            NSLog(@"COUNT IS CHANGING! old: %i, new: %ul", oldCount, [hillaries count]);
-        }
-        
         // watch for collisions
         UIImageView *iv = [hillaries objectAtIndex:i];
       
@@ -56,7 +46,7 @@
             //NSLog(@"2 in nsnumber form: %@", [NSNumber numberWithInt:2]);
             if (prevStateInt == 1)
             {
-                NSLog(@"playing sound!");
+                //NSLog(@"playing sound!");
                 int randNum = arc4random_uniform(100);
                 if (randNum > 60)
                 {
@@ -78,7 +68,7 @@
                 }
             }
             
-            NSLog(@"perv state int = %i", prevStateInt);
+            //NSLog(@"perv state int = %i", prevStateInt);
             if (prevStateInt < 9)
             {
                 [iv setImage:[UIImage imageNamed:@"fire4-flipped-big.png"]];
@@ -134,24 +124,17 @@
             trumpState = 1;
             
             //NSLog(@"Collision");
-            //hasCollision = 1;
         }
-        else if ([[hillaryStates objectAtIndex:i] intValue] >= 3) // when fire goes out
+        //else if ([[hillaryStates objectAtIndex:i] intValue] >= 3) // when fire goes out
+        if (CGRectIntersectsRect(iv.frame, adFrame.frame))
         {
-            //hasCollision = 1;
             NSLog(@"fire goes out, removing from hillaries array");
             iv.hidden = YES;
             
             [toUpdate addObject:[NSNumber numberWithInt:i]];
         }
-        /*
-        if (hasCollision == 0)
-        {
-            // make them fall
-            CGPoint oldCenter = iv.center;
-            [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
-        }
-         */
+        
+        
         
         CGPoint oldCenter = iv.center;
         [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
@@ -342,15 +325,24 @@
     [self.view bringSubviewToFront:countLabel];
     
     float trumpRatio = 270./375.; // height/width
+    
     trump = [[UIImageView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen, widthOfScreen, trumpRatio*widthOfScreen)];
+    //trump = [[UIImageView alloc] initWithFrame:CGRectMake(0, heightOfScreen-trumpRatio*widthOfScreen, widthOfScreen, trumpRatio*widthOfScreen)];
     [self.view addSubview:trump];
     
     
     // make trump outline uiviews
     
+    
     trumpOutline1 = [[UIView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen*.38, widthOfScreen*.5, trumpRatio*widthOfScreen*.38)]; // left shoulder
     trumpOutline3 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5, heightOfScreen-50-trumpRatio*widthOfScreen*.28, widthOfScreen*.5, trumpRatio*widthOfScreen*.28)]; // right shoulder
     trumpOutline2 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5 - 60, heightOfScreen-50-trumpRatio*widthOfScreen, 120, trumpRatio*widthOfScreen*.5)]; // head
+    
+    /*
+    trumpOutline1 = [[UIView alloc] initWithFrame:CGRectMake(0, heightOfScreen-trumpRatio*widthOfScreen*.38, widthOfScreen*.5, trumpRatio*widthOfScreen*.38)]; // left shoulder
+    trumpOutline3 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5, heightOfScreen-trumpRatio*widthOfScreen*.28, widthOfScreen*.5, trumpRatio*widthOfScreen*.28)]; // right shoulder
+    trumpOutline2 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5 - 60, heightOfScreen-trumpRatio*widthOfScreen, 120, trumpRatio*widthOfScreen*.5)]; // head
+     */
     [self.view addSubview:trumpOutline1];
     [self.view addSubview:trumpOutline2];
     [self.view addSubview:trumpOutline3];
@@ -378,6 +370,7 @@
     [super viewDidAppear:animated];
     [self becomeFirstResponder];
     
+    adFrame = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)];
     _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
     _adBanner.delegate = self;
 }

@@ -22,6 +22,8 @@
     UIView *trumpOutline2;
     UIView *trumpOutline3;
     
+    UIView *adFrame;
+    
     int trumpState; 
     
     NSMutableArray *hillaries;
