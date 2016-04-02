@@ -19,6 +19,10 @@
     //IBOutlet UIImageView *hillary;
     IBOutlet UIImageView *cloud;
     
+    UIView *trumpOutline1;
+    UIView *trumpOutline2;
+    UIView *trumpOutline3;
+    
     int trumpState; 
     
     NSMutableArray *hillaries;
@@ -36,6 +40,7 @@
     SystemSoundID sound3;
     SystemSoundID china1;
 
+    
 }
 
 

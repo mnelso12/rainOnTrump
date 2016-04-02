@@ -112,6 +112,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A3D6DC31CAF66350081F1D9 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5AEF02961CAED4BF00B88ACC /* smallSound2.wav */,
+				5AEF02981CAED53000B88ACC /* smallSound3.wav */,
+				5AEF028E1CAECC4600B88ACC /* grunt2.wav */,
+				5AEF028C1CAECA6C00B88ACC /* grunt2.flac */,
+				5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */,
+				5AEF02921CAED3D700B88ACC /* bigSoundFile.wav */,
+				5A5D89C11CAE094400EFAA02 /* grunt1.wav */,
+				5A3D6DC11CAF51750081F1D9 /* china2.wav */,
+				5AFCEC071CAF502A0016EDD1 /* china.wav */,
+				5AEF029A1CAED71D00B88ACC /* smallSound4.wav */,
+				5AEF02941CAED47900B88ACC /* smallSound1.wav */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
+		5A3D6DC51CAF667F0081F1D9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */,
+				5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */,
+				5A5D89B11CAD862800EFAA02 /* trump1.jpg */,
+				5A5D89B51CAD8F5D00EFAA02 /* HillaryObj.h */,
+				5A5D89B31CAD87F600EFAA02 /* hillary1.jpg */,
+				5A5D89B91CADA80A00EFAA02 /* fire1.jpg */,
+				5A5D89BF1CADEC7000EFAA02 /* trump11.png */,
+				5A5D89BD1CADEC6200EFAA02 /* trump10.png */,
+				5A5D89B71CAD9FB200EFAA02 /* cloud1.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		5A5D897F1CAD847700EFAA02 = {
 			isa = PBXGroup;
 			children = (
@@ -141,27 +175,9 @@
 				5A5D89901CAD847800EFAA02 /* AppDelegate.m */,
 				5A5D89921CAD847800EFAA02 /* ViewController.h */,
 				5A5D89931CAD847800EFAA02 /* ViewController.m */,
-				5AFCEC071CAF502A0016EDD1 /* china.wav */,
-				5A3D6DC11CAF51750081F1D9 /* china2.wav */,
-				5AEF02921CAED3D700B88ACC /* bigSoundFile.wav */,
-				5AEF028E1CAECC4600B88ACC /* grunt2.wav */,
-				5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */,
-				5AEF028C1CAECA6C00B88ACC /* grunt2.flac */,
-				5A5D89C11CAE094400EFAA02 /* grunt1.wav */,
-				5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */,
 				5A5D89951CAD847900EFAA02 /* Main.storyboard */,
-				5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */,
-				5A5D89B71CAD9FB200EFAA02 /* cloud1.png */,
-				5A5D89B51CAD8F5D00EFAA02 /* HillaryObj.h */,
-				5A5D89BD1CADEC6200EFAA02 /* trump10.png */,
-				5AEF02941CAED47900B88ACC /* smallSound1.wav */,
-				5AEF02961CAED4BF00B88ACC /* smallSound2.wav */,
-				5AEF02981CAED53000B88ACC /* smallSound3.wav */,
-				5AEF029A1CAED71D00B88ACC /* smallSound4.wav */,
-				5A5D89BF1CADEC7000EFAA02 /* trump11.png */,
-				5A5D89B31CAD87F600EFAA02 /* hillary1.jpg */,
-				5A5D89B91CADA80A00EFAA02 /* fire1.jpg */,
-				5A5D89B11CAD862800EFAA02 /* trump1.jpg */,
+				5A3D6DC51CAF667F0081F1D9 /* images */,
+				5A3D6DC31CAF66350081F1D9 /* sounds */,
 				5A5D89981CAD847900EFAA02 /* Images.xcassets */,
 				5A5D899A1CAD847900EFAA02 /* LaunchScreen.xib */,
 				5A5D898B1CAD847800EFAA02 /* Supporting Files */,

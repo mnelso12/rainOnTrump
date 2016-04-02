@@ -30,18 +30,20 @@
     //NSLog(@"hillary array size: %lu", [hillaries count]);
     int oldCount = (int)[hillaries count];
     
+    //NSLog(@"hillary states: %@", [hillaryStates description]);
+    
     for (int i=0; i<[hillaries count]; i++)
     {
         if ([hillaries count] != oldCount)
         {
-            NSLog(@"COUNT IS CHANGING! old: %i, new: %lu", oldCount, [hillaries count]);
+            NSLog(@"COUNT IS CHANGING! old: %i, new: %ul", oldCount, [hillaries count]);
         }
         
         // watch for collisions
         UIImageView *iv = [hillaries objectAtIndex:i];
       
-        //if ([self pointInside:CGPointMake(iv.center.x, iv.center.y)] == YES)
-        if (CGRectIntersectsRect(iv.frame, trump.frame)) // collision, make/keep fire and count fire
+        //if (CGRectIntersectsRect(iv.frame, trump.frame)) // collision, make/keep fire and count fire
+        if (CGRectIntersectsRect(iv.frame, trumpOutline1.frame) || CGRectIntersectsRect(iv.frame, trumpOutline2.frame))
         {
             [iv setImage:[UIImage imageNamed:@"fire2.jpg"]];
             NSNumber *prevState = [hillaryStates objectAtIndex:i];
@@ -77,13 +79,11 @@
             [hillaryStates setObject:[NSNumber numberWithInt:prevStateInt] atIndexedSubscript:i];
             trumpState = 1;
             
-            
-            //AudioServicesPlaySystemSound(grunt1);
-            //NSLog(@"Collision");
+            NSLog(@"Collision");
         }
-        else if ((int)[hillaryStates objectAtIndex:i] >= 3) // when fire goes out
+        else if ([[hillaryStates objectAtIndex:i] intValue] >= 3) // when fire goes out
         {
-            //NSLog(@"fire goes out, removing from hillaries array");
+            NSLog(@"fire goes out, removing from hillaries array");
             iv.hidden = YES;
             
             [toUpdate addObject:[NSNumber numberWithInt:i]];
@@ -91,7 +91,7 @@
         
         // make them fall
         CGPoint oldCenter = iv.center;
-        [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+3)];
+        [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
     }
     
     
@@ -158,22 +158,15 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self makeHillaryBigger];
-    
-    /*
-    UITouch *myTouch = [[event allTouches] anyObject];
-    
-    UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hillary1.jpg"]];
-    [tempHillary setFrame:CGRectMake(0, 0, 30, 30)];
-    [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 0)];
-    [self.view addSubview:tempHillary];
-    
-    [hillaries addObject:tempHillary];
-    [self makeHillaryBigger];
-     */
-    
-    //hillary.center = [myTouch locationInView:self.view];
 }
 
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake)
+    {
+        AudioServicesPlaySystemSound(china1);
+    }
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -193,13 +186,14 @@
     }
     
     UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    [tempHillary setFrame:CGRectMake(0, 0, 30, 30)];
-    [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 60)];
+    [tempHillary setFrame:CGRectMake(0, 0, 40, 40)];
+    [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 150)];
     [self.view addSubview:tempHillary];
+    [self.view bringSubviewToFront:tempHillary];
     
     [hillaries addObject:tempHillary];
     [hillaryStates addObject:[NSNumber numberWithInt:0]]; // 0 = hillary, 1 = collision/fire, >5 = hidden
-    [self.view bringSubviewToFront:cloud];
+    //[self.view bringSubviewToFront:cloud];
     
     count++;
     [countLabel setText:[NSString stringWithFormat:@"%i",count]];
@@ -210,7 +204,6 @@
     [self.view addSubview:countLabel];
     [self.view bringSubviewToFront:countLabel];
     
-    //hillary.center = [myTouch locationInView:self.view];
     [self applyHillarySize];
 }
 
@@ -234,28 +227,6 @@
 
 }
 
-/*
-- (BOOL)pointInside:(CGPoint)point
-{
-    //Using code from http://stackoverflow.com/questions/1042830/retrieving-a-pixel-alpha-value-for-a-uiimage
-    
-    unsigned char pixel[1] = {0};
-    CGContextRef context = CGBitmapContextCreate(pixel,
-                                                 1, 1, 8, 1, NULL,
-                                                 kCGImageAlphaOnly);
-    UIGraphicsPushContext(context);
-    [[UIImage imageNamed:@"trump10.png"] drawAtPoint:CGPointMake(-point.x, -point.y)];
-    UIGraphicsPopContext();
-    CGContextRelease(context);
-    CGFloat alpha = pixel[0]/255.0f;
-    BOOL transparent = alpha < 0.01f;
-    
-    NSLog(@"transparent? : %d", !transparent);
-    
-    return !transparent;
-}
-*/
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -276,6 +247,48 @@
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath5], &(sound3));
     
     
+    
+    trumpState = 0;
+    hillaryScale = 1.;
+    hillaries = [[NSMutableArray alloc] initWithObjects: nil];
+    hillaryStates = [[NSMutableArray alloc] initWithObjects: nil];
+    timer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(collision) userInfo:nil repeats:YES];
+    
+    
+    
+    // put uiimageviews in right spots
+    
+    CGSize screenSize      = [[UIScreen mainScreen] bounds].size;
+    CGFloat widthOfScreen  = screenSize.width;
+    CGFloat heightOfScreen = screenSize.height;
+    cloud = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, widthOfScreen, 100)];
+    [cloud setImage:[UIImage imageNamed:@"cloud1.png"]];
+    
+    countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, widthOfScreen, 60)];
+    [countLabel setFont:[UIFont fontWithName:@"Verdana" size:32]];
+    [countLabel setTextColor:[UIColor whiteColor]];
+    [countLabel setTextAlignment:NSTextAlignmentCenter];
+    
+    [self.view addSubview:cloud];
+    [self.view addSubview:countLabel];
+    //[self.view bringSubviewToFront:cloud];
+    [self.view bringSubviewToFront:countLabel];
+    
+    float trumpRatio = 270./375.; // height/width
+    trump = [[UIImageView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen, widthOfScreen, trumpRatio*widthOfScreen)];
+    [self.view addSubview:trump];
+    
+    
+    // make trump outline uiviews
+    
+    trumpOutline1 = [[UIView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen*.42, widthOfScreen, trumpRatio*widthOfScreen*.42)]; // shoulders
+    trumpOutline2 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5 - 60, heightOfScreen-50-trumpRatio*widthOfScreen, 120, trumpRatio*widthOfScreen*.5)]; // head
+    [self.view addSubview:trumpOutline1];
+    [self.view addSubview:trumpOutline2];
+    
+    
+    // make count label work
+    
     if (![[NSUserDefaults standardUserDefaults] stringForKey:@"score"])
     {
         [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"score"];
@@ -287,22 +300,14 @@
         count = [[[NSUserDefaults standardUserDefaults] stringForKey:@"score"] intValue];
         [countLabel setText:[NSString stringWithFormat:@"%i", count]];
     }
-
-    CGSize screenSize      = [[UIScreen mainScreen] bounds].size;
-    CGFloat widthOfScreen  = screenSize.width;
-    CGFloat heightOfScreen = screenSize.height;
-    [cloud setFrame:CGRectMake(0, 0, widthOfScreen, 0)];
     
-    trumpState = 0;
-    hillaryScale = 1.;
-    hillaries = [[NSMutableArray alloc] initWithObjects: nil];
-    hillaryStates = [[NSMutableArray alloc] initWithObjects: nil];
-    timer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(collision) userInfo:nil repeats:YES];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self becomeFirstResponder];
     
     _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
     _adBanner.delegate = self;
@@ -352,6 +357,16 @@
         _bannerIsVisible = NO;
     }
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self resignFirstResponder];
+    [super viewWillDisappear:animated];
+}
+
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
 
 
 @end

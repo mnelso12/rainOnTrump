@@ -16,6 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    application.applicationSupportsShakeToEdit = YES;
     // Override point for customization after application launch.
     return YES;
 }
