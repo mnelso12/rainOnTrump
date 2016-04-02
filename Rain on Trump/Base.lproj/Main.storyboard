@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cloud1.png" translatesAutoresizingMaskIntoConstraints="NO" id="8e2-Ym-8zj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cloud1.png" translatesAutoresizingMaskIntoConstraints="NO" id="8e2-Ym-8zj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trump11.png" translatesAutoresizingMaskIntoConstraints="NO" id="ltM-hC-QWJ">
-                                <rect key="frame" x="0.0" y="263" width="375" height="271"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k96-yo-dcv">
                                 <rect key="frame" x="25" y="28" width="325" height="52"/>
@@ -28,8 +26,24 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="trump11.png" translatesAutoresizingMaskIntoConstraints="NO" id="ltM-hC-QWJ">
+                                <rect key="frame" x="0.0" y="336" width="375" height="271"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8e2-Ym-8zj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="I51-vk-KsL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8e2-Ym-8zj" secondAttribute="bottom" constant="561" id="Ohk-yh-kH9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8e2-Ym-8zj" secondAttribute="bottom" constant="500" id="PFx-gl-jUc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8e2-Ym-8zj" secondAttribute="trailing" id="WT7-Fv-MBL"/>
+                            <constraint firstItem="8e2-Ym-8zj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="bhA-aQ-Uee"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ltM-hC-QWJ" secondAttribute="bottom" constant="50" id="fZz-rU-k8H"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ohk-yh-kH9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>

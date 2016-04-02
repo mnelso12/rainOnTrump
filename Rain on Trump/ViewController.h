@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <iAd/iAd.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<ADBannerViewDelegate>
 {
     int count;
     IBOutlet UILabel *countLabel;
@@ -33,6 +34,7 @@
     SystemSoundID sound1;
     SystemSoundID sound2;
     SystemSoundID sound3;
+    SystemSoundID china1;
 
 }
 

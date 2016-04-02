@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A3D6DC21CAF51750081F1D9 /* china2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5A3D6DC11CAF51750081F1D9 /* china2.wav */; };
 		5A5D898E1CAD847800EFAA02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D898D1CAD847800EFAA02 /* main.m */; };
 		5A5D89911CAD847800EFAA02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D89901CAD847800EFAA02 /* AppDelegate.m */; };
 		5A5D89941CAD847800EFAA02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D89931CAD847800EFAA02 /* ViewController.m */; };
@@ -23,6 +24,20 @@
 		5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BD1CADEC6200EFAA02 /* trump10.png */; };
 		5A5D89C01CADEC7000EFAA02 /* trump11.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BF1CADEC7000EFAA02 /* trump11.png */; };
 		5A5D89C21CAE094400EFAA02 /* grunt1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89C11CAE094400EFAA02 /* grunt1.wav */; };
+		5AEF028D1CAECA6C00B88ACC /* grunt2.flac in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028C1CAECA6C00B88ACC /* grunt2.flac */; };
+		5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028E1CAECC4600B88ACC /* grunt2.wav */; };
+		5AEF02911CAECE7D00B88ACC /* grunt2-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */; };
+		5AEF02931CAED3D700B88ACC /* bigSoundFile.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02921CAED3D700B88ACC /* bigSoundFile.wav */; };
+		5AEF02951CAED47900B88ACC /* smallSound1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02941CAED47900B88ACC /* smallSound1.wav */; };
+		5AEF02971CAED4BF00B88ACC /* smallSound2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02961CAED4BF00B88ACC /* smallSound2.wav */; };
+		5AEF02991CAED53000B88ACC /* smallSound3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02981CAED53000B88ACC /* smallSound3.wav */; };
+		5AEF029B1CAED71D00B88ACC /* smallSound4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF029A1CAED71D00B88ACC /* smallSound4.wav */; };
+		5AFCEBFE1CAF2C5D0016EDD1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEBFD1CAF2C5D0016EDD1 /* iAd.framework */; };
+		5AFCEC001CAF2C680016EDD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEBFF1CAF2C680016EDD1 /* CoreGraphics.framework */; };
+		5AFCEC021CAF2C6C0016EDD1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEC011CAF2C6C0016EDD1 /* UIKit.framework */; };
+		5AFCEC041CAF2C740016EDD1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEC031CAF2C740016EDD1 /* Foundation.framework */; };
+		5AFCEC061CAF47A90016EDD1 /* kelly1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */; };
+		5AFCEC081CAF502A0016EDD1 /* china.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AFCEC071CAF502A0016EDD1 /* china.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A3D6DC11CAF51750081F1D9 /* china2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = china2.wav; path = ../../../Downloads/china2.wav; sourceTree = "<group>"; };
 		5A5D89881CAD847800EFAA02 /* Rain on Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rain on Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5D898C1CAD847800EFAA02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A5D898D1CAD847800EFAA02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -58,6 +74,20 @@
 		5A5D89BD1CADEC6200EFAA02 /* trump10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump10.png; sourceTree = "<group>"; };
 		5A5D89BF1CADEC7000EFAA02 /* trump11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump11.png; sourceTree = "<group>"; };
 		5A5D89C11CAE094400EFAA02 /* grunt1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt1.wav; sourceTree = "<group>"; };
+		5AEF028C1CAECA6C00B88ACC /* grunt2.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = grunt2.flac; sourceTree = "<group>"; };
+		5AEF028E1CAECC4600B88ACC /* grunt2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt2.wav; sourceTree = "<group>"; };
+		5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "grunt2-2.wav"; sourceTree = "<group>"; };
+		5AEF02921CAED3D700B88ACC /* bigSoundFile.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bigSoundFile.wav; sourceTree = "<group>"; };
+		5AEF02941CAED47900B88ACC /* smallSound1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = smallSound1.wav; sourceTree = "<group>"; };
+		5AEF02961CAED4BF00B88ACC /* smallSound2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = smallSound2.wav; sourceTree = "<group>"; };
+		5AEF02981CAED53000B88ACC /* smallSound3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = smallSound3.wav; sourceTree = "<group>"; };
+		5AEF029A1CAED71D00B88ACC /* smallSound4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = smallSound4.wav; sourceTree = "<group>"; };
+		5AFCEBFD1CAF2C5D0016EDD1 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		5AFCEBFF1CAF2C680016EDD1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5AFCEC011CAF2C6C0016EDD1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5AFCEC031CAF2C740016EDD1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = kelly1.jpg; path = ../../kelly1.jpg; sourceTree = "<group>"; };
+		5AFCEC071CAF502A0016EDD1 /* china.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = china.wav; path = ../../../Downloads/china.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +95,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFCEC041CAF2C740016EDD1 /* Foundation.framework in Frameworks */,
+				5AFCEC021CAF2C6C0016EDD1 /* UIKit.framework in Frameworks */,
+				5AFCEC001CAF2C680016EDD1 /* CoreGraphics.framework in Frameworks */,
+				5AFCEBFE1CAF2C5D0016EDD1 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +115,10 @@
 		5A5D897F1CAD847700EFAA02 = {
 			isa = PBXGroup;
 			children = (
+				5AFCEC031CAF2C740016EDD1 /* Foundation.framework */,
+				5AFCEC011CAF2C6C0016EDD1 /* UIKit.framework */,
+				5AFCEBFF1CAF2C680016EDD1 /* CoreGraphics.framework */,
+				5AFCEBFD1CAF2C5D0016EDD1 /* iAd.framework */,
 				5A5D898A1CAD847800EFAA02 /* Rain on Trump */,
 				5A5D89A41CAD847900EFAA02 /* Rain on TrumpTests */,
 				5A5D89891CAD847800EFAA02 /* Products */,
@@ -103,12 +141,23 @@
 				5A5D89901CAD847800EFAA02 /* AppDelegate.m */,
 				5A5D89921CAD847800EFAA02 /* ViewController.h */,
 				5A5D89931CAD847800EFAA02 /* ViewController.m */,
+				5AFCEC071CAF502A0016EDD1 /* china.wav */,
+				5A3D6DC11CAF51750081F1D9 /* china2.wav */,
+				5AEF02921CAED3D700B88ACC /* bigSoundFile.wav */,
+				5AEF028E1CAECC4600B88ACC /* grunt2.wav */,
+				5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */,
+				5AEF028C1CAECA6C00B88ACC /* grunt2.flac */,
 				5A5D89C11CAE094400EFAA02 /* grunt1.wav */,
 				5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */,
 				5A5D89951CAD847900EFAA02 /* Main.storyboard */,
+				5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */,
 				5A5D89B71CAD9FB200EFAA02 /* cloud1.png */,
 				5A5D89B51CAD8F5D00EFAA02 /* HillaryObj.h */,
 				5A5D89BD1CADEC6200EFAA02 /* trump10.png */,
+				5AEF02941CAED47900B88ACC /* smallSound1.wav */,
+				5AEF02961CAED4BF00B88ACC /* smallSound2.wav */,
+				5AEF02981CAED53000B88ACC /* smallSound3.wav */,
+				5AEF029A1CAED71D00B88ACC /* smallSound4.wav */,
 				5A5D89BF1CADEC7000EFAA02 /* trump11.png */,
 				5A5D89B31CAD87F600EFAA02 /* hillary1.jpg */,
 				5A5D89B91CADA80A00EFAA02 /* fire1.jpg */,
@@ -228,15 +277,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A5D89971CAD847900EFAA02 /* Main.storyboard in Resources */,
+				5AEF029B1CAED71D00B88ACC /* smallSound4.wav in Resources */,
 				5A5D89B81CAD9FB200EFAA02 /* cloud1.png in Resources */,
 				5A5D899C1CAD847900EFAA02 /* LaunchScreen.xib in Resources */,
+				5A3D6DC21CAF51750081F1D9 /* china2.wav in Resources */,
 				5A5D89B21CAD862800EFAA02 /* trump1.jpg in Resources */,
 				5A5D89C21CAE094400EFAA02 /* grunt1.wav in Resources */,
+				5AEF02931CAED3D700B88ACC /* bigSoundFile.wav in Resources */,
+				5AFCEC081CAF502A0016EDD1 /* china.wav in Resources */,
+				5AEF02911CAECE7D00B88ACC /* grunt2-2.wav in Resources */,
+				5AEF02951CAED47900B88ACC /* smallSound1.wav in Resources */,
+				5AEF028D1CAECA6C00B88ACC /* grunt2.flac in Resources */,
 				5A5D89BC1CADAAEE00EFAA02 /* fire2.jpg in Resources */,
 				5A5D89B41CAD87F600EFAA02 /* hillary1.jpg in Resources */,
+				5AFCEC061CAF47A90016EDD1 /* kelly1.jpg in Resources */,
 				5A5D89991CAD847900EFAA02 /* Images.xcassets in Resources */,
+				5AEF02991CAED53000B88ACC /* smallSound3.wav in Resources */,
+				5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */,
 				5A5D89C01CADEC7000EFAA02 /* trump11.png in Resources */,
 				5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */,
+				5AEF02971CAED4BF00B88ACC /* smallSound2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +517,7 @@
 				5A5D89AD1CAD847900EFAA02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A5D89AE1CAD847900EFAA02 /* Build configuration list for PBXNativeTarget "Rain on TrumpTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +526,7 @@
 				5A5D89B01CAD847900EFAA02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

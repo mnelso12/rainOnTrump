@@ -9,9 +9,13 @@
 #import "ViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <stdlib.h> // since when does this exist
-
+#import <math.h>
 
 @interface ViewController ()
+{
+    BOOL _bannerIsVisible;
+    ADBannerView *_adBanner;
+}
 
 @end
 
@@ -49,17 +53,23 @@
             {
                 NSLog(@"playing sound!");
                 int randNum = arc4random_uniform(100);
-                if (randNum > 75)
+                if (randNum > 60)
                 {
-                   AudioServicesPlaySystemSound(grunt1);
+                   AudioServicesPlaySystemSound(grunt1); // short and high
                 }
                 else if (randNum > 40)
                 {
-                    AudioServicesPlaySystemSound(grunt2);
+                    //AudioServicesPlaySystemSound(grunt2); // lower
+                    AudioServicesPlaySystemSound(sound3); // two noises, kinda low
+                }
+                else if (randNum > 15)
+                {
+                    //AudioServicesPlaySystemSound(sound2); // two noises
+                    AudioServicesPlaySystemSound(sound1); // good one
                 }
                 else
                 {
-                    AudioServicesPlaySystemSound(sound2);
+                    AudioServicesPlaySystemSound(china1);
                 }
                     
                 
@@ -71,7 +81,7 @@
             //AudioServicesPlaySystemSound(grunt1);
             //NSLog(@"Collision");
         }
-        else if ((int)[hillaryStates objectAtIndex:i] >= 5) // when fire goes out
+        else if ((int)[hillaryStates objectAtIndex:i] >= 3) // when fire goes out
         {
             //NSLog(@"fire goes out, removing from hillaries array");
             iv.hidden = YES;
@@ -102,6 +112,7 @@
     }
     
     [self updateTrump];
+    [self.view bringSubviewToFront:_adBanner];
 }
 
 - (void)updateTrump
@@ -169,7 +180,19 @@
     
     UITouch *myTouch = [[event allTouches] anyObject];
     
-    UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hillary1.jpg"]];
+    NSString *imageName;
+    int randNum = arc4random_uniform(10);
+    NSLog(@"randNum = %i", randNum);
+    if ( randNum % 2 == 0)
+    {
+        imageName = @"hillary1.jpg";
+    }
+    else
+    {
+        imageName = @"kelly1.jpg";
+    }
+    
+    UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     [tempHillary setFrame:CGRectMake(0, 0, 30, 30)];
     [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 60)];
     [self.view addSubview:tempHillary];
@@ -198,7 +221,7 @@
 
 - (void)increaseHillarySize
 {
-    hillaryScale += 15.;
+    hillaryScale += 25.;
 }
 
 - (void)applyHillarySize
@@ -239,6 +262,8 @@
     
     [self.view setBackgroundColor:[UIColor blackColor]];
     
+    NSString *soundPath0 = [[NSBundle mainBundle] pathForResource:@"china" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath0], &(china1));
     NSString *soundPath1 = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
     NSString *soundPath2 = [[NSBundle mainBundle] pathForResource:@"grunt2-2" ofType:@"wav"];
@@ -248,7 +273,7 @@
     NSString *soundPath4 = [[NSBundle mainBundle] pathForResource:@"smallSound2" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath4], &(sound2));
     NSString *soundPath5 = [[NSBundle mainBundle] pathForResource:@"smallSound3" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath5], &(sound1));
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath5], &(sound3));
     
     
     if (![[NSUserDefaults standardUserDefaults] stringForKey:@"score"])
@@ -263,7 +288,11 @@
         [countLabel setText:[NSString stringWithFormat:@"%i", count]];
     }
 
-
+    CGSize screenSize      = [[UIScreen mainScreen] bounds].size;
+    CGFloat widthOfScreen  = screenSize.width;
+    CGFloat heightOfScreen = screenSize.height;
+    [cloud setFrame:CGRectMake(0, 0, widthOfScreen, 0)];
+    
     trumpState = 0;
     hillaryScale = 1.;
     hillaries = [[NSMutableArray alloc] initWithObjects: nil];
@@ -271,9 +300,58 @@
     timer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(collision) userInfo:nil repeats:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+    _adBanner.delegate = self;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"ad loaded");
+    if (!_bannerIsVisible)
+    {
+        // If banner isn't part of view hierarchy, add it
+        if (_adBanner.superview == nil)
+        {
+            [self.view addSubview:_adBanner];
+        }
+        
+        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        
+        // Assumes the banner view is just off the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        _bannerIsVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"Failed to retrieve ad");
+    
+    if (_bannerIsVisible)
+    {
+        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        
+        // Assumes the banner view is placed at the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        _bannerIsVisible = NO;
+    }
+}
+
 
 @end
