@@ -47,7 +47,8 @@
         //if (CGRectIntersectsRect(iv.frame, trump.frame)) // collision, make/keep fire and count fire
         if (CGRectIntersectsRect(iv.frame, trumpOutline1.frame) || CGRectIntersectsRect(iv.frame, trumpOutline2.frame) || CGRectIntersectsRect(iv.frame, trumpOutline3.frame))
         {
-            [iv setImage:[UIImage imageNamed:@"fire2.jpg"]];
+            
+            
             NSNumber *prevState = [hillaryStates objectAtIndex:i];
             int prevStateInt = [prevState intValue];
             prevStateInt++;
@@ -75,13 +76,64 @@
                 {
                     AudioServicesPlaySystemSound(china1);
                 }
-                    
-                
             }
+            
+            NSLog(@"perv state int = %i", prevStateInt);
+            if (prevStateInt < 9)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire4-flipped-big.png"]];
+            }
+            else if (prevStateInt < 18)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire4.png"]];
+            }
+            else if (prevStateInt < 27)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire6.png"]];
+            }
+            else if (prevStateInt < 36)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire6-flipped.png"]];
+            }
+            else if (prevStateInt < 45)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire4-flipped-big.png"]];
+            }
+            else if (prevStateInt < 54)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire4.png"]];
+            }
+            else if (prevStateInt < 63)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire6.png"]];
+            }
+            else if (prevStateInt < 72)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire6-flipped.png"]];
+            }
+            else if (prevStateInt < 81)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire4-flipped-big.png"]];
+            }
+            else if (prevStateInt < 90)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire4.png"]];
+            }
+            else if (prevStateInt < 99)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire6.png"]];
+            }
+            else if (prevStateInt < 108)
+            {
+                [iv setImage:[UIImage imageNamed:@"fire6-flipped.png"]];
+            }
+
+
+            
             [hillaryStates setObject:[NSNumber numberWithInt:prevStateInt] atIndexedSubscript:i];
             trumpState = 1;
             
-            NSLog(@"Collision");
+            //NSLog(@"Collision");
             //hasCollision = 1;
         }
         else if ([[hillaryStates objectAtIndex:i] intValue] >= 3) // when fire goes out
@@ -199,6 +251,7 @@
     UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     [tempHillary setFrame:CGRectMake(0, 0, 50, 65)];
     [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 60)];
+    [tempHillary setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:tempHillary];
     [self.view bringSubviewToFront:tempHillary];
     
