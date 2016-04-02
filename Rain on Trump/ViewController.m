@@ -189,15 +189,15 @@
     NSLog(@"randNum = %i", randNum);
     if ( randNum % 2 == 0)
     {
-        imageName = @"emptyDrop2.png";
+        imageName = @"kellyDrop.png";
     }
     else
     {
-        imageName = @"emptyDrop2.png";
+        imageName = @"hillaryDrop.png";
     }
     
     UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    [tempHillary setFrame:CGRectMake(0, 0, 80, 80)];
+    [tempHillary setFrame:CGRectMake(0, 0, 50, 65)];
     [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 60)];
     [self.view addSubview:tempHillary];
     [self.view bringSubviewToFront:tempHillary];
@@ -235,7 +235,7 @@
 {
     UIImageView *iv = [hillaries objectAtIndex:[hillaries count]-1]; // got last hillary
     CGPoint oldCenter = iv.center;
-    [iv setFrame:CGRectMake(oldCenter.x, oldCenter.y, hillaryScale*80, hillaryScale*80)];
+    [iv setFrame:CGRectMake(oldCenter.x, oldCenter.y, hillaryScale*50, hillaryScale*65)];
     hillaryScale = 1.;
     [sizeTimer invalidate];
 

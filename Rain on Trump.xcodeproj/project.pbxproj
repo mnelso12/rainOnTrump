@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A23F78B1CB0675C002C0D40 /* fire4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7851CB0675C002C0D40 /* fire4.png */; };
+		5A23F78C1CB0675C002C0D40 /* fire6-flipped.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7861CB0675C002C0D40 /* fire6-flipped.png */; };
+		5A23F78D1CB0675C002C0D40 /* fire6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7871CB0675C002C0D40 /* fire6.png */; };
+		5A23F78E1CB0675C002C0D40 /* fire4-flipped-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7881CB0675C002C0D40 /* fire4-flipped-big.png */; };
+		5A23F78F1CB0675C002C0D40 /* kellyDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7891CB0675C002C0D40 /* kellyDrop.png */; };
+		5A23F7901CB0675C002C0D40 /* hillaryDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F78A1CB0675C002C0D40 /* hillaryDrop.png */; };
+		5A23F7921CB06996002C0D40 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7911CB06996002C0D40 /* AppIcon.appiconset */; };
 		5A2D9C481CAF71FB00CEC37F /* emptyDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D9C471CAF71FB00CEC37F /* emptyDrop.png */; };
 		5A3D6DC21CAF51750081F1D9 /* china2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5A3D6DC11CAF51750081F1D9 /* china2.wav */; };
 		5A5D898E1CAD847800EFAA02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D898D1CAD847800EFAA02 /* main.m */; };
@@ -53,6 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A23F7851CB0675C002C0D40 /* fire4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire4.png; path = ../../../Downloads/fire4.png; sourceTree = "<group>"; };
+		5A23F7861CB0675C002C0D40 /* fire6-flipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire6-flipped.png"; path = "../../../Downloads/fire6-flipped.png"; sourceTree = "<group>"; };
+		5A23F7871CB0675C002C0D40 /* fire6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire6.png; path = ../../../Downloads/fire6.png; sourceTree = "<group>"; };
+		5A23F7881CB0675C002C0D40 /* fire4-flipped-big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire4-flipped-big.png"; path = "../../../Downloads/fire4-flipped-big.png"; sourceTree = "<group>"; };
+		5A23F7891CB0675C002C0D40 /* kellyDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kellyDrop.png; path = ../../../Downloads/kellyDrop.png; sourceTree = "<group>"; };
+		5A23F78A1CB0675C002C0D40 /* hillaryDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hillaryDrop.png; path = ../../../Downloads/hillaryDrop.png; sourceTree = "<group>"; };
+		5A23F7911CB06996002C0D40 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = "../../Downloads/appIcon2 2/ios/AppIcon.appiconset"; sourceTree = "<group>"; };
 		5A2D9C471CAF71FB00CEC37F /* emptyDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emptyDrop.png; path = ../../../Downloads/emptyDrop.png; sourceTree = "<group>"; };
 		5A3D6DC11CAF51750081F1D9 /* china2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = china2.wav; path = ../../../Downloads/china2.wav; sourceTree = "<group>"; };
 		5A5D89881CAD847800EFAA02 /* Rain on Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rain on Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +151,12 @@
 		5A3D6DC51CAF667F0081F1D9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5A23F7851CB0675C002C0D40 /* fire4.png */,
+				5A23F7861CB0675C002C0D40 /* fire6-flipped.png */,
+				5A23F7871CB0675C002C0D40 /* fire6.png */,
+				5A23F7881CB0675C002C0D40 /* fire4-flipped-big.png */,
+				5A23F7891CB0675C002C0D40 /* kellyDrop.png */,
+				5A23F78A1CB0675C002C0D40 /* hillaryDrop.png */,
 				5A73446F1CAF7AA40025D2C4 /* emptyDrop2.png */,
 				5A2D9C471CAF71FB00CEC37F /* emptyDrop.png */,
 				5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */,
@@ -155,6 +175,7 @@
 		5A5D897F1CAD847700EFAA02 = {
 			isa = PBXGroup;
 			children = (
+				5A23F7911CB06996002C0D40 /* AppIcon.appiconset */,
 				5AFCEC031CAF2C740016EDD1 /* Foundation.framework */,
 				5AFCEC011CAF2C6C0016EDD1 /* UIKit.framework */,
 				5AFCEBFF1CAF2C680016EDD1 /* CoreGraphics.framework */,
@@ -298,12 +319,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A23F78C1CB0675C002C0D40 /* fire6-flipped.png in Resources */,
 				5A5D89971CAD847900EFAA02 /* Main.storyboard in Resources */,
 				5AEF029B1CAED71D00B88ACC /* smallSound4.wav in Resources */,
 				5A5D89B81CAD9FB200EFAA02 /* cloud1.png in Resources */,
 				5A5D899C1CAD847900EFAA02 /* LaunchScreen.xib in Resources */,
 				5A3D6DC21CAF51750081F1D9 /* china2.wav in Resources */,
 				5A5D89B21CAD862800EFAA02 /* trump1.jpg in Resources */,
+				5A23F7901CB0675C002C0D40 /* hillaryDrop.png in Resources */,
+				5A23F78E1CB0675C002C0D40 /* fire4-flipped-big.png in Resources */,
+				5A23F78B1CB0675C002C0D40 /* fire4.png in Resources */,
+				5A23F78D1CB0675C002C0D40 /* fire6.png in Resources */,
 				5A5D89C21CAE094400EFAA02 /* grunt1.wav in Resources */,
 				5AEF02931CAED3D700B88ACC /* bigSoundFile.wav in Resources */,
 				5AFCEC081CAF502A0016EDD1 /* china.wav in Resources */,
@@ -312,6 +338,7 @@
 				5AEF028D1CAECA6C00B88ACC /* grunt2.flac in Resources */,
 				5A5D89BC1CADAAEE00EFAA02 /* fire2.jpg in Resources */,
 				5A5D89B41CAD87F600EFAA02 /* hillary1.jpg in Resources */,
+				5A23F78F1CB0675C002C0D40 /* kellyDrop.png in Resources */,
 				5AFCEC061CAF47A90016EDD1 /* kelly1.jpg in Resources */,
 				5A5D89991CAD847900EFAA02 /* Images.xcassets in Resources */,
 				5AEF02991CAED53000B88ACC /* smallSound3.wav in Resources */,
@@ -320,6 +347,7 @@
 				5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */,
 				5A7344701CAF7AA40025D2C4 /* emptyDrop2.png in Resources */,
 				5A2D9C481CAF71FB00CEC37F /* emptyDrop.png in Resources */,
+				5A23F7921CB06996002C0D40 /* AppIcon.appiconset in Resources */,
 				5AEF02971CAED4BF00B88ACC /* smallSound2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,7 +497,7 @@
 		5A5D89AC1CAD847900EFAA02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Rain on Trump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -481,7 +509,7 @@
 		5A5D89AD1CAD847900EFAA02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Rain on Trump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
