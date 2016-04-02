@@ -16,7 +16,6 @@
     IBOutlet UILabel *countLabel;
     
     IBOutlet UIImageView *trump;
-    //IBOutlet UIImageView *hillary;
     IBOutlet UIImageView *cloud;
     
     UIView *trumpOutline1;

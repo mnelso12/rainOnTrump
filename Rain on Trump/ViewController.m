@@ -24,6 +24,7 @@
 - (void)collision
 {
     NSMutableArray *toUpdate = [[NSMutableArray alloc] init];
+    //int hasCollision = 0;
     
     //NSLog(@"trumpState = %i", trumpState);
     
@@ -34,6 +35,7 @@
     
     for (int i=0; i<[hillaries count]; i++)
     {
+        //hasCollision = 0;
         if ([hillaries count] != oldCount)
         {
             NSLog(@"COUNT IS CHANGING! old: %i, new: %ul", oldCount, [hillaries count]);
@@ -80,16 +82,25 @@
             trumpState = 1;
             
             NSLog(@"Collision");
+            //hasCollision = 1;
         }
         else if ([[hillaryStates objectAtIndex:i] intValue] >= 3) // when fire goes out
         {
+            //hasCollision = 1;
             NSLog(@"fire goes out, removing from hillaries array");
             iv.hidden = YES;
             
             [toUpdate addObject:[NSNumber numberWithInt:i]];
         }
+        /*
+        if (hasCollision == 0)
+        {
+            // make them fall
+            CGPoint oldCenter = iv.center;
+            [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
+        }
+         */
         
-        // make them fall
         CGPoint oldCenter = iv.center;
         [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
     }
@@ -178,22 +189,22 @@
     NSLog(@"randNum = %i", randNum);
     if ( randNum % 2 == 0)
     {
-        imageName = @"hillary1.jpg";
+        imageName = @"emptyDrop2.png";
     }
     else
     {
-        imageName = @"kelly1.jpg";
+        imageName = @"emptyDrop2.png";
     }
     
     UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    [tempHillary setFrame:CGRectMake(0, 0, 40, 40)];
-    [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 150)];
+    [tempHillary setFrame:CGRectMake(0, 0, 80, 80)];
+    [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 60)];
     [self.view addSubview:tempHillary];
     [self.view bringSubviewToFront:tempHillary];
     
     [hillaries addObject:tempHillary];
     [hillaryStates addObject:[NSNumber numberWithInt:0]]; // 0 = hillary, 1 = collision/fire, >5 = hidden
-    //[self.view bringSubviewToFront:cloud];
+    [self.view bringSubviewToFront:cloud];
     
     count++;
     [countLabel setText:[NSString stringWithFormat:@"%i",count]];
@@ -214,14 +225,14 @@
 
 - (void)increaseHillarySize
 {
-    hillaryScale += 25.;
+    hillaryScale += .25;
 }
 
 - (void)applyHillarySize
 {
     UIImageView *iv = [hillaries objectAtIndex:[hillaries count]-1]; // got last hillary
     CGPoint oldCenter = iv.center;
-    [iv setFrame:CGRectMake(oldCenter.x, oldCenter.y, hillaryScale+30, hillaryScale+30)];
+    [iv setFrame:CGRectMake(oldCenter.x, oldCenter.y, hillaryScale*80, hillaryScale*80)];
     hillaryScale = 1.;
     [sizeTimer invalidate];
 

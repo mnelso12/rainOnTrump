@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A2D9C481CAF71FB00CEC37F /* emptyDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D9C471CAF71FB00CEC37F /* emptyDrop.png */; };
 		5A3D6DC21CAF51750081F1D9 /* china2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5A3D6DC11CAF51750081F1D9 /* china2.wav */; };
 		5A5D898E1CAD847800EFAA02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D898D1CAD847800EFAA02 /* main.m */; };
 		5A5D89911CAD847800EFAA02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D89901CAD847800EFAA02 /* AppDelegate.m */; };
@@ -24,6 +25,7 @@
 		5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BD1CADEC6200EFAA02 /* trump10.png */; };
 		5A5D89C01CADEC7000EFAA02 /* trump11.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89BF1CADEC7000EFAA02 /* trump11.png */; };
 		5A5D89C21CAE094400EFAA02 /* grunt1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5A5D89C11CAE094400EFAA02 /* grunt1.wav */; };
+		5A7344701CAF7AA40025D2C4 /* emptyDrop2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A73446F1CAF7AA40025D2C4 /* emptyDrop2.png */; };
 		5AEF028D1CAECA6C00B88ACC /* grunt2.flac in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028C1CAECA6C00B88ACC /* grunt2.flac */; };
 		5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028E1CAECC4600B88ACC /* grunt2.wav */; };
 		5AEF02911CAECE7D00B88ACC /* grunt2-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */; };
@@ -51,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A2D9C471CAF71FB00CEC37F /* emptyDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emptyDrop.png; path = ../../../Downloads/emptyDrop.png; sourceTree = "<group>"; };
 		5A3D6DC11CAF51750081F1D9 /* china2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = china2.wav; path = ../../../Downloads/china2.wav; sourceTree = "<group>"; };
 		5A5D89881CAD847800EFAA02 /* Rain on Trump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rain on Trump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5D898C1CAD847800EFAA02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		5A5D89BD1CADEC6200EFAA02 /* trump10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump10.png; sourceTree = "<group>"; };
 		5A5D89BF1CADEC7000EFAA02 /* trump11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trump11.png; sourceTree = "<group>"; };
 		5A5D89C11CAE094400EFAA02 /* grunt1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt1.wav; sourceTree = "<group>"; };
+		5A73446F1CAF7AA40025D2C4 /* emptyDrop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emptyDrop2.png; path = ../../../Downloads/emptyDrop2.png; sourceTree = "<group>"; };
 		5AEF028C1CAECA6C00B88ACC /* grunt2.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = grunt2.flac; sourceTree = "<group>"; };
 		5AEF028E1CAECC4600B88ACC /* grunt2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt2.wav; sourceTree = "<group>"; };
 		5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "grunt2-2.wav"; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		5A3D6DC51CAF667F0081F1D9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5A73446F1CAF7AA40025D2C4 /* emptyDrop2.png */,
+				5A2D9C471CAF71FB00CEC37F /* emptyDrop.png */,
 				5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */,
 				5A5D89BB1CADAAEE00EFAA02 /* fire2.jpg */,
 				5A5D89B11CAD862800EFAA02 /* trump1.jpg */,
@@ -312,6 +318,8 @@
 				5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */,
 				5A5D89C01CADEC7000EFAA02 /* trump11.png in Resources */,
 				5A5D89BE1CADEC6200EFAA02 /* trump10.png in Resources */,
+				5A7344701CAF7AA40025D2C4 /* emptyDrop2.png in Resources */,
+				5A2D9C481CAF71FB00CEC37F /* emptyDrop.png in Resources */,
 				5AEF02971CAED4BF00B88ACC /* smallSound2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +474,7 @@
 				INFOPLIST_FILE = "Rain on Trump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -477,6 +486,7 @@
 				INFOPLIST_FILE = "Rain on Trump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
