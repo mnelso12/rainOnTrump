@@ -24,6 +24,7 @@
 - (void)collision
 {
     NSMutableArray *toUpdate = [[NSMutableArray alloc] init];
+    BOOL move = YES;
     
     //NSLog(@"trumpState = %i", trumpState);
     //NSLog(@"hillary array size: %lu", [hillaries count]);
@@ -68,6 +69,40 @@
                 }
             }
             
+            NSLog(@"perv state int = %i", prevStateInt);
+            if (prevStateInt < 10)
+            {
+                [iv setImage:[UIImage imageNamed:@"drawing7-1.png"]];
+                move = NO;
+            }
+            else if (prevStateInt < 20)
+            {
+                [iv setImage:[UIImage imageNamed:@"drawing8-1.png"]];
+                move = NO;
+            }
+            else if (prevStateInt < 30)
+            {
+                [iv setImage:[UIImage imageNamed:@"drawing9-1.png"]];
+                move = NO;
+            }
+            else if (prevStateInt < 40)
+            {
+                [iv setImage:[UIImage imageNamed:@"drawing5-1.png"]];
+                move = NO;
+            }
+            else if (prevStateInt < 50)
+            {
+                [iv setImage:[UIImage imageNamed:@"drawing6-1.png"]];
+                move = NO;
+            }
+            else if (prevStateInt < 1000)
+            {
+                [iv setImage:[UIImage imageNamed:@"empty"]];
+                move = YES;
+            }
+
+            
+            /*
             //NSLog(@"perv state int = %i", prevStateInt);
             if (prevStateInt < 9)
             {
@@ -118,7 +153,7 @@
                 [iv setImage:[UIImage imageNamed:@"fire6-flipped.png"]];
             }
 
-
+*/
             
             [hillaryStates setObject:[NSNumber numberWithInt:prevStateInt] atIndexedSubscript:i];
             trumpState = 1;
@@ -128,17 +163,24 @@
         //else if ([[hillaryStates objectAtIndex:i] intValue] >= 3) // when fire goes out
         if (CGRectIntersectsRect(iv.frame, adFrame.frame))
         {
-            NSLog(@"fire goes out, removing from hillaries array");
+            //NSLog(@"fire goes out, removing from hillaries array");
             iv.hidden = YES;
             
             [toUpdate addObject:[NSNumber numberWithInt:i]];
         }
         
+        if (move)
+        {
+            CGPoint oldCenter = iv.center;
+            [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
+        }
+        else
+        {
+            CGPoint oldCenter = iv.center;
+            [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
+        }
         
-        
-        CGPoint oldCenter = iv.center;
-        [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
-    }
+}
     
     
     if (trumpState >= 1)
@@ -221,7 +263,7 @@
     
     NSString *imageName;
     int randNum = arc4random_uniform(10);
-    NSLog(@"randNum = %i", randNum);
+    //NSLog(@"randNum = %i", randNum);
     if ( randNum % 2 == 0)
     {
         imageName = @"kellyDrop.png";
