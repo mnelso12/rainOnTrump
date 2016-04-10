@@ -51,27 +51,28 @@
                 int randNum = arc4random_uniform(100);
                 if (randNum > 60)
                 {
-                   //AudioServicesPlaySystemSound(grunt1); // short and high
-                    AudioServicesPlaySystemSound(highlyInappropriate);
+                    //AudioServicesPlaySystemSound(grunt1); // short and high
+                    AudioServicesPlaySystemSound(idc);
                 }
                 else if (randNum > 40)
                 {
                     ////////////////AudioServicesPlaySystemSound(grunt2); // lower
                     //AudioServicesPlaySystemSound(sound3); // two noises, kinda low
-                    AudioServicesPlaySystemSound(idc);
+                    AudioServicesPlaySystemSound(china1);
                 }
                 else if (randNum > 15)
                 {
                     ////////////AudioServicesPlaySystemSound(sound2); // two noises
-                    AudioServicesPlaySystemSound(sound1); // good one
+                    //AudioServicesPlaySystemSound(sound1); // good one
+                    AudioServicesPlaySystemSound(highlyInappropriate);
                 }
                 else
                 {
-                    AudioServicesPlaySystemSound(china1);
+                    AudioServicesPlaySystemSound(wall);
                 }
             }
             
-            NSLog(@"perv state int = %i", prevStateInt);
+            NSLog(@"prev state int = %i", prevStateInt);
             if (prevStateInt < 10)
             {
                 [iv setImage:[UIImage imageNamed:@"drawing7-1.png"]];
@@ -264,10 +265,10 @@
     UITouch *myTouch = [[event allTouches] anyObject];
     
     NSString *imageName;
-    //int randNum = arc4random_uniform(10);
-    imageName = @"emptyDrop2.png";
+    int randNum = arc4random_uniform(10);
+    //imageName = @"emptyDrop2.png";
     //NSLog(@"randNum = %i", randNum);
-    /*
+    
     if ( randNum % 2 == 0)
     {
         imageName = @"kellyDrop.png";
@@ -276,7 +277,7 @@
     {
         imageName = @"hillaryDrop.png";
     }
-     */
+    
     
     UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     //[tempHillary setFrame:CGRectMake(0, 0, 50, 65)];
@@ -338,6 +339,8 @@
     
     NSString *soundPath6 = [[NSBundle mainBundle] pathForResource:@"idc" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath6], &(idc));
+    NSString *soundPath8 = [[NSBundle mainBundle] pathForResource:@"wall1" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath8], &(wall));
     NSString *soundPath7 = [[NSBundle mainBundle] pathForResource:@"highlyInappropriate" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath7], &(highlyInappropriate));
     

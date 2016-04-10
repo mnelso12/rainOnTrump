@@ -35,6 +35,7 @@
     float hillaryScale;
     
     SystemSoundID idc;
+    SystemSoundID wall;
     SystemSoundID highlyInappropriate;
     SystemSoundID grunt1;
     SystemSoundID grunt2;
