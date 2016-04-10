@@ -45,6 +45,9 @@
             prevStateInt++;
             //NSLog(@"prev state part: %i", prevStateInt);
             //NSLog(@"2 in nsnumber form: %@", [NSNumber numberWithInt:2]);
+            
+            
+            
             if (prevStateInt == 1)
             {
                 //NSLog(@"playing sound!");
@@ -70,6 +73,7 @@
                 {
                     AudioServicesPlaySystemSound(wall);
                 }
+                AudioServicesPlaySystemSound(water);
             }
             
             NSLog(@"prev state int = %i", prevStateInt);
@@ -343,6 +347,8 @@
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath8], &(wall));
     NSString *soundPath7 = [[NSBundle mainBundle] pathForResource:@"highlyInappropriate" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath7], &(highlyInappropriate));
+    NSString *soundPath9 = [[NSBundle mainBundle] pathForResource:@"waterSound" ofType:@"mp3"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath9], &(water));
     
     NSString *soundPath2 = [[NSBundle mainBundle] pathForResource:@"grunt2-2" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath2], &(grunt2));

@@ -34,6 +34,7 @@
 
     float hillaryScale;
     
+    SystemSoundID water;
     SystemSoundID idc;
     SystemSoundID wall;
     SystemSoundID highlyInappropriate;
