@@ -55,6 +55,11 @@
                 if (randNum > 60)
                 {
                     //AudioServicesPlaySystemSound(grunt1); // short and high
+                    //AudioServicesPlaySystemSound(idc);
+                    AudioServicesPlaySystemSound(china4);
+                }
+                else if (randNum > 55)
+                {
                     AudioServicesPlaySystemSound(idc);
                 }
                 else if (randNum > 40)
@@ -67,6 +72,11 @@
                 {
                     ////////////AudioServicesPlaySystemSound(sound2); // two noises
                     //AudioServicesPlaySystemSound(sound1); // good one
+                    //AudioServicesPlaySystemSound(highlyInappropriate);
+                    AudioServicesPlaySystemSound(china_);
+                }
+                else if (randNum >11)
+                {
                     AudioServicesPlaySystemSound(highlyInappropriate);
                 }
                 else
@@ -215,11 +225,13 @@
     if (trumpState == 0 || trumpState > 14)
     {
         trumpState = 0;
-        [trump setImage:[UIImage imageNamed:@"trump11.png"]];
+        //[trump setImage:[UIImage imageNamed:@"trump11.png"]];
+        [trump setImage:[UIImage imageNamed:@"trumpNew2-neutral.png"]];
     }
     else
     {
-        [trump setImage:[UIImage imageNamed:@"trump10.png"]];
+        //[trump setImage:[UIImage imageNamed:@"trump10.png"]];
+        [trump setImage:[UIImage imageNamed:@"trumpNew2-talking.png"]];
     }
 }
 
@@ -338,6 +350,10 @@
     
     NSString *soundPath0 = [[NSBundle mainBundle] pathForResource:@"china" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath0], &(china1));
+    NSString *soundPath10 = [[NSBundle mainBundle] pathForResource:@"china_" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath10], &(china_));
+    NSString *soundPath11 = [[NSBundle mainBundle] pathForResource:@"china4" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath11], &(china4));
     NSString *soundPath1 = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
     

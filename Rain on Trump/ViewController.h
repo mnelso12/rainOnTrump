@@ -44,6 +44,8 @@
     SystemSoundID sound2;
     SystemSoundID sound3;
     SystemSoundID china1;
+    SystemSoundID china_;
+    SystemSoundID china4;
 
     
 }
