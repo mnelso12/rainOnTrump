@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A2331C01CC342D20018E93C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEC031CAF2C740016EDD1 /* Foundation.framework */; };
 		5A23F78F1CB0675C002C0D40 /* kellyDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7891CB0675C002C0D40 /* kellyDrop.png */; };
 		5A23F7901CB0675C002C0D40 /* hillaryDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F78A1CB0675C002C0D40 /* hillaryDrop.png */; };
 		5A2920631CBAA81500DE19AA /* idc.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5A2920611CBAA81500DE19AA /* idc.wav */; };
@@ -42,7 +43,6 @@
 		5AFCEBFE1CAF2C5D0016EDD1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEBFD1CAF2C5D0016EDD1 /* iAd.framework */; };
 		5AFCEC001CAF2C680016EDD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEBFF1CAF2C680016EDD1 /* CoreGraphics.framework */; };
 		5AFCEC021CAF2C6C0016EDD1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEC011CAF2C6C0016EDD1 /* UIKit.framework */; };
-		5AFCEC041CAF2C740016EDD1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEC031CAF2C740016EDD1 /* Foundation.framework */; };
 		5AFCEC061CAF47A90016EDD1 /* kelly1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5AFCEC051CAF47A90016EDD1 /* kelly1.jpg */; };
 		5AFCEC081CAF502A0016EDD1 /* china.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AFCEC071CAF502A0016EDD1 /* china.wav */; };
 		5AFF4A311CC3225500B4AD94 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF4A301CC3225500B4AD94 /* AppIcon.appiconset */; };
@@ -119,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AFCEC041CAF2C740016EDD1 /* Foundation.framework in Frameworks */,
+				5A2331C01CC342D20018E93C /* Foundation.framework in Frameworks */,
 				5AFCEC021CAF2C6C0016EDD1 /* UIKit.framework in Frameworks */,
 				5AFCEC001CAF2C680016EDD1 /* CoreGraphics.framework in Frameworks */,
 				5AFCEBFE1CAF2C5D0016EDD1 /* iAd.framework in Frameworks */,
