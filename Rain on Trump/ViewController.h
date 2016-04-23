@@ -24,6 +24,13 @@
     
     UIView *adFrame;
     
+    UIView *leaderboard;
+    UILabel *leaderboardTitle;
+    UILabel *leaderboardTotal;
+    IBOutlet UIButton *leaderboardButton;
+    NSMutableArray *leaders;
+    BOOL isPaused;
+    
     int trumpState; 
     
     NSMutableArray *hillaries;
@@ -33,23 +40,8 @@
     NSTimer *sizeTimer;
 
     float hillaryScale;
-    
-    
-    /*
-    SystemSoundID water;
-    SystemSoundID idc;
-    SystemSoundID wall;
-    SystemSoundID highlyInappropriate;
-    SystemSoundID grunt1;
-    SystemSoundID grunt2;
-    SystemSoundID sound1;
-    SystemSoundID sound2;
-    SystemSoundID sound3;
-    SystemSoundID china1;
-    SystemSoundID china_;
-    SystemSoundID china4;
-*/
-    
+    CGFloat sw, sh;
+
 }
 
 

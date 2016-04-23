@@ -36,6 +36,8 @@
 		5A93B1101CCAFF5000B91EB8 /* outOfControl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B10F1CCAFF5000B91EB8 /* outOfControl.mp3 */; };
 		5A93B1121CCAFFA500B91EB8 /* imReallyRich.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1111CCAFFA500B91EB8 /* imReallyRich.mp3 */; };
 		5A93B1141CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */; };
+		5A93B1161CCB161700B91EB8 /* trophy1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1151CCB161700B91EB8 /* trophy1.png */; };
+		5A93B1181CCB1EF000B91EB8 /* closeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1171CCB1EF000B91EB8 /* closeButton.png */; };
 		5AEF028D1CAECA6C00B88ACC /* grunt2.flac in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028C1CAECA6C00B88ACC /* grunt2.flac */; };
 		5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028E1CAECC4600B88ACC /* grunt2.wav */; };
 		5AEF02911CAECE7D00B88ACC /* grunt2-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */; };
@@ -101,6 +103,8 @@
 		5A93B10F1CCAFF5000B91EB8 /* outOfControl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = outOfControl.mp3; sourceTree = "<group>"; };
 		5A93B1111CCAFFA500B91EB8 /* imReallyRich.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = imReallyRich.mp3; sourceTree = "<group>"; };
 		5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itsGoingToEnd.mp3; sourceTree = "<group>"; };
+		5A93B1151CCB161700B91EB8 /* trophy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trophy1.png; sourceTree = "<group>"; };
+		5A93B1171CCB1EF000B91EB8 /* closeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeButton.png; sourceTree = "<group>"; };
 		5AEF028C1CAECA6C00B88ACC /* grunt2.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = grunt2.flac; sourceTree = "<group>"; };
 		5AEF028E1CAECC4600B88ACC /* grunt2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt2.wav; sourceTree = "<group>"; };
 		5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "grunt2-2.wav"; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 		5A3D6DC51CAF667F0081F1D9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5A93B1171CCB1EF000B91EB8 /* closeButton.png */,
+				5A93B1151CCB161700B91EB8 /* trophy1.png */,
 				5A23F7891CB0675C002C0D40 /* kellyDrop.png */,
 				5A23F78A1CB0675C002C0D40 /* hillaryDrop.png */,
 				5A73446F1CAF7AA40025D2C4 /* emptyDrop2.png */,
@@ -346,6 +352,7 @@
 				5A93B1101CCAFF5000B91EB8 /* outOfControl.mp3 in Resources */,
 				5A5D89971CAD847900EFAA02 /* Main.storyboard in Resources */,
 				5AEF029B1CAED71D00B88ACC /* smallSound4.wav in Resources */,
+				5A93B1181CCB1EF000B91EB8 /* closeButton.png in Resources */,
 				5A2920661CBAB03800DE19AA /* wall1.wav in Resources */,
 				5A83D4671CB700B700C0EED5 /* drawing9-1.png in Resources */,
 				5A93B1121CCAFFA500B91EB8 /* imReallyRich.mp3 in Resources */,
@@ -377,6 +384,7 @@
 				5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */,
 				5A7344701CAF7AA40025D2C4 /* emptyDrop2.png in Resources */,
 				5A83D46A1CB700B700C0EED5 /* drawing7-1.png in Resources */,
+				5A93B1161CCB161700B91EB8 /* trophy1.png in Resources */,
 				5A2D9C481CAF71FB00CEC37F /* emptyDrop.png in Resources */,
 				5AEF02971CAED4BF00B88ACC /* smallSound2.wav in Resources */,
 			);

@@ -28,7 +28,6 @@
     AVAudioPlayer *itsGoingToEnd;
     AVAudioPlayer *imReallyRich;
     AVAudioPlayer *outOfControl;
-    
 }
 
 @end
@@ -37,6 +36,11 @@
 
 - (void)collision
 {
+    if (isPaused)
+    {
+        return;
+    }
+    
     NSMutableArray *toUpdate = [[NSMutableArray alloc] init];
     BOOL move = YES;
     
@@ -159,60 +163,6 @@
                 
             }
 
-            
-            /*
-            //NSLog(@"perv state int = %i", prevStateInt);
-            if (prevStateInt < 9)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire4-flipped-big.png"]];
-            }
-            else if (prevStateInt < 18)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire4.png"]];
-            }
-            else if (prevStateInt < 27)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire6.png"]];
-            }
-            else if (prevStateInt < 36)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire6-flipped.png"]];
-            }
-            else if (prevStateInt < 45)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire4-flipped-big.png"]];
-            }
-            else if (prevStateInt < 54)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire4.png"]];
-            }
-            else if (prevStateInt < 63)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire6.png"]];
-            }
-            else if (prevStateInt < 72)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire6-flipped.png"]];
-            }
-            else if (prevStateInt < 81)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire4-flipped-big.png"]];
-            }
-            else if (prevStateInt < 90)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire4.png"]];
-            }
-            else if (prevStateInt < 99)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire6.png"]];
-            }
-            else if (prevStateInt < 108)
-            {
-                [iv setImage:[UIImage imageNamed:@"fire6-flipped.png"]];
-            }
-
-*/
-            
             [hillaryStates setObject:[NSNumber numberWithInt:prevStateInt] atIndexedSubscript:i];
             trumpState = 1;
             
@@ -321,6 +271,11 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (isPaused)
+    {
+        return;
+    }
+    
     [self makeHillaryBigger];
 }
 
@@ -335,6 +290,10 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (isPaused)
+    {
+        return;
+    }
     
     UITouch *myTouch = [[event allTouches] anyObject];
     
@@ -364,6 +323,7 @@
     [hillaries addObject:tempHillary];
     [hillaryStates addObject:[NSNumber numberWithInt:0]]; // 0 = hillary, 1 = collision/fire, >5 = hidden
     [self.view bringSubviewToFront:cloud];
+    [self.view bringSubviewToFront:leaderboardButton];
     
     count++;
     [countLabel setText:[NSString stringWithFormat:@"%i",count]];
@@ -386,7 +346,7 @@
 {
     if (hillaryScale < 2.75) // cap because Ryan broke it
     {
-        hillaryScale += .15;
+        hillaryScale += .2;
     }
 }
 
@@ -397,7 +357,79 @@
     [iv setFrame:CGRectMake(oldCenter.x, oldCenter.y, hillaryScale*50, hillaryScale*65)];
     hillaryScale = 1.;
     [sizeTimer invalidate];
+}
 
+- (void)loadLeaderboard
+{
+    isPaused = YES;
+    
+    leaderboard = [[UIView alloc] initWithFrame:CGRectMake(sw*.05, sh*.05, sw*.9, sh - 90)];
+    [leaderboard setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:102./255 alpha:.65]];
+    leaderboard.layer.cornerRadius = 15;
+    leaderboard.layer.borderWidth = 5;
+    leaderboard.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:102./255 alpha:.8].CGColor;
+    
+    leaderboardTitle = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, sw*.8, 40)];
+    [leaderboardTitle setText:@"Leaderboard"];
+    [leaderboardTitle setTextColor:[UIColor whiteColor]];
+    [leaderboardTitle setFont:[UIFont fontWithName:@"Verdana" size:30]];
+    [leaderboardTitle setTextAlignment:NSTextAlignmentCenter];
+    [leaderboard addSubview:leaderboardTitle];
+    
+    // TODO make this real
+    leaders = [[NSMutableArray alloc] initWithObjects:@"Jimmy Pennoyer", @"Madelynnn", @"Johnny Rocha", @"John CENA!!!", @"Ryan Busk", @"JustinMcManus", @"Apple Tester", @"Dan Stowe", nil];
+    
+    for (int i = 0; i < [leaders count]; i++)
+    {
+        UILabel *tempLeader = [[UILabel alloc] initWithFrame:CGRectMake(15, 50+(30*i), sw*.8, 30)];
+        [tempLeader setTextColor:[UIColor whiteColor]];
+        NSString *labelString = [NSString stringWithFormat:@"%i%@%@", i+1, @". ", [leaders objectAtIndex:i]];
+        [tempLeader setText:labelString];
+        [tempLeader setFont:[UIFont fontWithName:@"Verdana" size:18]];
+        [tempLeader setTextAlignment:NSTextAlignmentLeft];
+        [leaderboard addSubview:tempLeader];
+    }
+    
+    leaderboardTotal = [[UILabel alloc] initWithFrame:CGRectMake(15, 50+(30*[leaders count]), sw*.8, 35)];
+    [leaderboardTotal setTextColor:[UIColor whiteColor]];
+    [leaderboardTotal setFont:[UIFont fontWithName:@"Verdana-Bold" size:20]];
+    [leaderboardTotal setTextAlignment:NSTextAlignmentCenter];
+    [leaderboardTotal setText:@"Total Hits: 10,293,823"];
+    [leaderboard addSubview:leaderboardTotal];
+    
+    [self.view addSubview:leaderboard];
+    [self.view bringSubviewToFront:leaderboard];
+    [self.view bringSubviewToFront:leaderboardButton];
+    
+}
+
+- (void)closeLeaderboard
+{
+    [leaderboard removeFromSuperview];
+}
+
+- (void)loadTrophyButton
+{
+    leaderboardButton = [[UIButton alloc] initWithFrame:CGRectMake(sw-60, 35, 35, 35)];
+    [leaderboardButton setBackgroundImage:[UIImage imageNamed:@"trophy1.png"] forState:UIControlStateNormal];
+    [leaderboardButton addTarget:self
+               action:@selector(pressedLeaderboard:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:leaderboardButton];
+}
+
+-(IBAction)pressedLeaderboard:(id)sender
+{
+    if (isPaused)
+    {
+        [leaderboardButton setBackgroundImage:[UIImage imageNamed:@"trophy1.png"] forState:UIControlStateNormal];
+        [self closeLeaderboard];
+        isPaused = NO;
+        return;
+    }
+    
+    [leaderboardButton setBackgroundImage:[UIImage imageNamed:@"closeButton.png"] forState:UIControlStateNormal];
+    [self loadLeaderboard];
 }
 
 - (void)viewDidLoad {
@@ -405,7 +437,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self.view setBackgroundColor:[UIColor blackColor]];
+    sw = [[UIScreen mainScreen] bounds].size.width;
+    sh = [[UIScreen mainScreen] bounds].size.height;
     
+    [self loadTrophyButton];
    
     NSString *path = [NSString stringWithFormat:@"%@/china.wav", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
@@ -461,11 +496,10 @@
     
     trumpState = 0;
     hillaryScale = 1.;
-    //hillaries = [[NSMutableArray alloc] initWithObjects: nil];
-    //hillaryStates = [[NSMutableArray alloc] initWithObjects: nil];
-    
     hillaries = [[NSMutableArray alloc] init];
     hillaryStates = [[NSMutableArray alloc] init];
+    
+    isPaused = NO;
     timer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(collision) userInfo:nil repeats:YES];
     //timer = [NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(collision) userInfo:nil repeats:YES];
     
@@ -486,8 +520,8 @@
     
     [self.view addSubview:cloud];
     [self.view addSubview:countLabel];
-    //[self.view bringSubviewToFront:cloud];
     [self.view bringSubviewToFront:countLabel];
+    [self.view bringSubviewToFront:leaderboardButton];
     
     float trumpRatio = 270./375.; // height/width
     
