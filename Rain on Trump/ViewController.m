@@ -27,7 +27,7 @@
     BOOL move = YES;
     
     //NSLog(@"trumpState = %i", trumpState);
-    //NSLog(@"hillary array size: %lu", [hillaries count]);
+    NSLog(@"hillary array size: %lu", (unsigned long)[hillaries count]);
     //NSLog(@"hillary states: %@", [hillaryStates description]);
     
     for (int i=0; i<[hillaries count]; i++)
@@ -86,7 +86,7 @@
                 AudioServicesPlaySystemSound(water);
             }
             
-            NSLog(@"prev state int = %i", prevStateInt);
+            //NSLog(@"prev state int = %i", prevStateInt);
             if (prevStateInt < 10)
             {
                 [iv setImage:[UIImage imageNamed:@"drawing7-1.png"]];
@@ -116,6 +116,10 @@
             {
                 [iv setImage:[UIImage imageNamed:@"empty"]];
                 move = YES;
+                
+                //iv.hidden = YES;
+                //[toUpdate addObject:[NSNumber numberWithInt:i]];
+                
             }
 
             
@@ -181,9 +185,12 @@
         if (CGRectIntersectsRect(iv.frame, adFrame.frame))
         {
             //NSLog(@"fire goes out, removing from hillaries array");
+      
+            
             iv.hidden = YES;
             
             [toUpdate addObject:[NSNumber numberWithInt:i]];
+            
         }
         
         if (move)
@@ -197,7 +204,7 @@
             [iv setCenter:CGPointMake(oldCenter.x, oldCenter.y+2)];
         }
         
-}
+    }
     
     
     if (trumpState >= 1)
@@ -208,10 +215,23 @@
     
     [self.view bringSubviewToFront:trump];
     
-    if ((int)[toUpdate count] > 0)
+    // added this
+    
+    
+    /* // was for testing\
+    if ((int)[toUpdate count] > 1)
     {
+        NSLog(@"REMOVING MORE THAN ONE HILLARY AT ONCE!!!!!");
+    }
+     */
+    
+    //if ((int)[toUpdate count] > 0)
+    if ((int)[toUpdate count] == 1)
+    {
+        NSLog(@"removing %lu number of hillaries!", (unsigned long)[toUpdate count]);
         for (NSNumber *n in toUpdate)
         {
+            NSLog(@"removing hillary number: %@", n);
             [self updateHillaryArr:[n intValue]];
         }
     }
@@ -259,7 +279,7 @@
         [hillaryStates addObject:[tempHillaryStates objectAtIndex:i]];
     }
     
-    //NSLog(@"after update: %@", [hillaries description]);
+   // NSLog(@"after update: %@", [hillaries description]);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -328,7 +348,7 @@
 {
     if (hillaryScale < 2.75) // cap because Ryan broke it
     {
-        hillaryScale += .25;
+        hillaryScale += .15;
     }
 }
 
@@ -379,9 +399,13 @@
     
     trumpState = 0;
     hillaryScale = 1.;
-    hillaries = [[NSMutableArray alloc] initWithObjects: nil];
-    hillaryStates = [[NSMutableArray alloc] initWithObjects: nil];
+    //hillaries = [[NSMutableArray alloc] initWithObjects: nil];
+    //hillaryStates = [[NSMutableArray alloc] initWithObjects: nil];
+    
+    hillaries = [[NSMutableArray alloc] init];
+    hillaryStates = [[NSMutableArray alloc] init];
     timer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(collision) userInfo:nil repeats:YES];
+    //timer = [NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(collision) userInfo:nil repeats:YES];
     
     
     
