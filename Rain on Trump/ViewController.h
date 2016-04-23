@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <iAd/iAd.h>
+#import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<ADBannerViewDelegate>
+@interface ViewController : UIViewController<ADBannerViewDelegate, UIAlertViewDelegate>
 {
     int count;
     IBOutlet UILabel *countLabel;
@@ -27,8 +28,11 @@
     UIView *leaderboard;
     UILabel *leaderboardTitle;
     UILabel *leaderboardTotal;
+    UILabel *leaderboardShareLabel;
     IBOutlet UIButton *leaderboardButton;
     NSMutableArray *leaders;
+    NSMutableArray *leaderScores;
+    IBOutlet UIButton *fb;
     BOOL isPaused;
     
     int trumpState; 

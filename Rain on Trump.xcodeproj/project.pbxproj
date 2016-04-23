@@ -38,6 +38,7 @@
 		5A93B1141CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */; };
 		5A93B1161CCB161700B91EB8 /* trophy1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1151CCB161700B91EB8 /* trophy1.png */; };
 		5A93B1181CCB1EF000B91EB8 /* closeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1171CCB1EF000B91EB8 /* closeButton.png */; };
+		5A93B11A1CCB300200B91EB8 /* facebookIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1191CCB300200B91EB8 /* facebookIcon.png */; };
 		5AEF028D1CAECA6C00B88ACC /* grunt2.flac in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028C1CAECA6C00B88ACC /* grunt2.flac */; };
 		5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028E1CAECC4600B88ACC /* grunt2.wav */; };
 		5AEF02911CAECE7D00B88ACC /* grunt2-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */; };
@@ -105,6 +106,7 @@
 		5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itsGoingToEnd.mp3; sourceTree = "<group>"; };
 		5A93B1151CCB161700B91EB8 /* trophy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trophy1.png; sourceTree = "<group>"; };
 		5A93B1171CCB1EF000B91EB8 /* closeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeButton.png; sourceTree = "<group>"; };
+		5A93B1191CCB300200B91EB8 /* facebookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookIcon.png; sourceTree = "<group>"; };
 		5AEF028C1CAECA6C00B88ACC /* grunt2.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = grunt2.flac; sourceTree = "<group>"; };
 		5AEF028E1CAECC4600B88ACC /* grunt2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt2.wav; sourceTree = "<group>"; };
 		5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "grunt2-2.wav"; sourceTree = "<group>"; };
@@ -151,6 +153,9 @@
 		5A3D6DC31CAF66350081F1D9 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				5A2920651CBAB03700DE19AA /* wall1.wav */,
+				5A2920621CBAA81500DE19AA /* highlyInappropriate.wav */,
+				5A2920691CBABB9A00DE19AA /* waterSound.mp3 */,
 				5A93B10D1CCAFF0300B91EB8 /* cutGovtSpending.mp3 */,
 				5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */,
 				5A93B1111CCAFFA500B91EB8 /* imReallyRich.mp3 */,
@@ -162,8 +167,11 @@
 				5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */,
 				5AEF02921CAED3D700B88ACC /* bigSoundFile.wav */,
 				5A5D89C11CAE094400EFAA02 /* grunt1.wav */,
+				5AFF4A371CC32F4400B4AD94 /* china4.wav */,
 				5A3D6DC11CAF51750081F1D9 /* china2.wav */,
 				5AFCEC071CAF502A0016EDD1 /* china.wav */,
+				5AFF4A361CC32F4400B4AD94 /* china_.wav */,
+				5A2920611CBAA81500DE19AA /* idc.wav */,
 				5AEF029A1CAED71D00B88ACC /* smallSound4.wav */,
 				5AEF02941CAED47900B88ACC /* smallSound1.wav */,
 			);
@@ -173,6 +181,7 @@
 		5A3D6DC51CAF667F0081F1D9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5A93B1191CCB300200B91EB8 /* facebookIcon.png */,
 				5A93B1171CCB1EF000B91EB8 /* closeButton.png */,
 				5A93B1151CCB161700B91EB8 /* trophy1.png */,
 				5A23F7891CB0675C002C0D40 /* kellyDrop.png */,
@@ -218,12 +227,6 @@
 				5A5D89901CAD847800EFAA02 /* AppDelegate.m */,
 				5A5D89921CAD847800EFAA02 /* ViewController.h */,
 				5A5D89931CAD847800EFAA02 /* ViewController.m */,
-				5AFF4A361CC32F4400B4AD94 /* china_.wav */,
-				5AFF4A371CC32F4400B4AD94 /* china4.wav */,
-				5A2920691CBABB9A00DE19AA /* waterSound.mp3 */,
-				5A2920651CBAB03700DE19AA /* wall1.wav */,
-				5A2920611CBAA81500DE19AA /* idc.wav */,
-				5A2920621CBAA81500DE19AA /* highlyInappropriate.wav */,
 				5A83D4621CB700B700C0EED5 /* drawing9-1.png */,
 				5A83D4631CB700B700C0EED5 /* drawing8-1.png */,
 				5A83D4641CB700B700C0EED5 /* drawing6-1.png */,
@@ -378,6 +381,7 @@
 				5A23F78F1CB0675C002C0D40 /* kellyDrop.png in Resources */,
 				5AFCEC061CAF47A90016EDD1 /* kelly1.jpg in Resources */,
 				5A5D89991CAD847900EFAA02 /* Images.xcassets in Resources */,
+				5A93B11A1CCB300200B91EB8 /* facebookIcon.png in Resources */,
 				5AEF02991CAED53000B88ACC /* smallSound3.wav in Resources */,
 				5AFF4A381CC32F4400B4AD94 /* china_.wav in Resources */,
 				5AFF4A391CC32F4400B4AD94 /* china4.wav in Resources */,

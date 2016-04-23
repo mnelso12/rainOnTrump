@@ -12,6 +12,7 @@
 #import <math.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ViewController ()
 {
@@ -45,7 +46,7 @@
     BOOL move = YES;
     
     //NSLog(@"trumpState = %i", trumpState);
-    NSLog(@"hillary array size: %lu", (unsigned long)[hillaries count]);
+    //NSLog(@"hillary array size: %lu", (unsigned long)[hillaries count]);
     //NSLog(@"hillary states: %@", [hillaryStates description]);
     
     for (int i=0; i<[hillaries count]; i++)
@@ -378,6 +379,7 @@
     
     // TODO make this real
     leaders = [[NSMutableArray alloc] initWithObjects:@"Jimmy Pennoyer", @"Madelynnn", @"Johnny Rocha", @"John CENA!!!", @"Ryan Busk", @"JustinMcManus", @"Apple Tester", @"Dan Stowe", nil];
+    leaderScores = [[NSMutableArray alloc] initWithObjects:@"770,000", @"90,912", @"90,873", @"36,123", @"3,020", @"820", @"120", @"89", nil];
     
     for (int i = 0; i < [leaders count]; i++)
     {
@@ -387,7 +389,16 @@
         [tempLeader setText:labelString];
         [tempLeader setFont:[UIFont fontWithName:@"Verdana" size:18]];
         [tempLeader setTextAlignment:NSTextAlignmentLeft];
+        
+        UILabel *tempScore = [[UILabel alloc] initWithFrame:CGRectMake(15, 50+(30*i), sw*.8, 30)];
+        [tempScore setTextColor:[UIColor whiteColor]];
+        NSString *scoreString = [leaderScores objectAtIndex:i];
+        [tempScore setText:scoreString];
+        [tempScore setFont:[UIFont fontWithName:@"Verdana" size:18]];
+        [tempScore setTextAlignment:NSTextAlignmentRight];
+        
         [leaderboard addSubview:tempLeader];
+        [leaderboard addSubview:tempScore];
     }
     
     leaderboardTotal = [[UILabel alloc] initWithFrame:CGRectMake(15, 50+(30*[leaders count]), sw*.8, 35)];
@@ -396,6 +407,18 @@
     [leaderboardTotal setTextAlignment:NSTextAlignmentCenter];
     [leaderboardTotal setText:@"Total Hits: 10,293,823"];
     [leaderboard addSubview:leaderboardTotal];
+    
+    leaderboardShareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, sh - 90 - 55, sw*.8, 35)];
+    [leaderboardShareLabel setTextColor:[UIColor whiteColor]];
+    [leaderboardShareLabel setFont:[UIFont fontWithName:@"Verdana-Italic" size:18]];
+    [leaderboardShareLabel setTextAlignment:NSTextAlignmentLeft];
+    [leaderboardShareLabel setText:@"Share for better drops!"];
+    [leaderboard addSubview:leaderboardShareLabel];
+    
+    fb = [[UIButton alloc] initWithFrame:CGRectMake(sw*.75 - 10, sh - 90 - 55, 35, 35)];
+    [fb addTarget:self action:@selector(pressedFB:) forControlEvents:UIControlEventTouchUpInside];
+    [fb setBackgroundImage:[UIImage imageNamed:@"facebookIcon.png"] forState:UIControlStateNormal];
+    [leaderboard addSubview:fb];
     
     [self.view addSubview:leaderboard];
     [self.view bringSubviewToFront:leaderboard];
@@ -418,7 +441,7 @@
     [self.view addSubview:leaderboardButton];
 }
 
--(IBAction)pressedLeaderboard:(id)sender
+- (IBAction)pressedLeaderboard:(id)sender
 {
     if (isPaused)
     {
@@ -432,6 +455,11 @@
     [self loadLeaderboard];
 }
 
+- (IBAction)pressedFB:(id)sender
+{
+    NSLog(@"Pressed facebook");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -441,6 +469,7 @@
     sh = [[UIScreen mainScreen] bounds].size.height;
     
     [self loadTrophyButton];
+    //[self addAlertView];
    
     NSString *path = [NSString stringWithFormat:@"%@/china.wav", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
@@ -578,6 +607,28 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)addAlertView{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
+                              @"Title" message:@"This is a test alert" delegate:self
+                                             cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:
+(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"Cancel button clicked");
+            break;
+        case 1:
+            NSLog(@"OK button clicked");
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
