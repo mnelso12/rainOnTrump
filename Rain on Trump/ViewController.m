@@ -10,11 +10,21 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <stdlib.h> // since when does this exist
 #import <math.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()
 {
     BOOL _bannerIsVisible;
     ADBannerView *_adBanner;
+    AVAudioPlayer *water;
+    AVAudioPlayer *china;
+    AVAudioPlayer *china_;
+    AVAudioPlayer *china4;
+    AVAudioPlayer *idc;
+    AVAudioPlayer *wall1;
+    AVAudioPlayer *highlyInapropriate;
+    
 }
 
 @end
@@ -56,34 +66,41 @@
                 {
                     //AudioServicesPlaySystemSound(grunt1); // short and high
                     //AudioServicesPlaySystemSound(idc);
-                    AudioServicesPlaySystemSound(china4);
+                    //AudioServicesPlaySystemSound(china4);
+                    [china4 play];
                 }
                 else if (randNum > 55)
                 {
-                    AudioServicesPlaySystemSound(idc);
+                    //AudioServicesPlaySystemSound(idc);
+                    [idc play];
                 }
                 else if (randNum > 40)
                 {
                     ////////////////AudioServicesPlaySystemSound(grunt2); // lower
                     //AudioServicesPlaySystemSound(sound3); // two noises, kinda low
-                    AudioServicesPlaySystemSound(china1);
+                    //AudioServicesPlaySystemSound(china1);
+                    [china play];
                 }
                 else if (randNum > 15)
                 {
                     ////////////AudioServicesPlaySystemSound(sound2); // two noises
                     //AudioServicesPlaySystemSound(sound1); // good one
                     //AudioServicesPlaySystemSound(highlyInappropriate);
-                    AudioServicesPlaySystemSound(china_);
+                    //AudioServicesPlaySystemSound(china_);
+                    [china_ play];
                 }
                 else if (randNum >11)
                 {
-                    AudioServicesPlaySystemSound(highlyInappropriate);
+                    //AudioServicesPlaySystemSound(highlyInappropriate);
+                    [highlyInapropriate play];
                 }
                 else
                 {
-                    AudioServicesPlaySystemSound(wall);
+                    //AudioServicesPlaySystemSound(wall);
+                    [wall1 play];
                 }
-                AudioServicesPlaySystemSound(water);
+                //AudioServicesPlaySystemSound(water);
+                [water play];
             }
             
             //NSLog(@"prev state int = %i", prevStateInt);
@@ -291,7 +308,8 @@
 {
     if (motion == UIEventSubtypeMotionShake)
     {
-        AudioServicesPlaySystemSound(china1);
+        //AudioServicesPlaySystemSound(china1);
+        [china play];
     }
 }
 
@@ -368,15 +386,44 @@
     
     [self.view setBackgroundColor:[UIColor blackColor]];
     
-    NSString *soundPath0 = [[NSBundle mainBundle] pathForResource:@"china" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath0], &(china1));
-    NSString *soundPath10 = [[NSBundle mainBundle] pathForResource:@"china_" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath10], &(china_));
-    NSString *soundPath11 = [[NSBundle mainBundle] pathForResource:@"china4" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath11], &(china4));
-    NSString *soundPath1 = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
+   
     
+    
+    
+    //NSString *soundPath0 = [[NSBundle mainBundle] pathForResource:@"china" ofType:@"wav"];
+    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath0], &(china1));
+    //NSString *soundPath10 = [[NSBundle mainBundle] pathForResource:@"china_" ofType:@"wav"];
+    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath10], &(china_));
+    //NSString *soundPath11 = [[NSBundle mainBundle] pathForResource:@"china4" ofType:@"wav"];
+    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath11], &(china4));
+    //NSString *soundPath1 = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
+    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
+    
+    NSString *path = [NSString stringWithFormat:@"%@/china.wav", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl = [NSURL fileURLWithPath:path];
+    china = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    NSString *path1 = [NSString stringWithFormat:@"%@/china_.wav", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl1 = [NSURL fileURLWithPath:path1];
+    china_ = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl1 error:nil];
+    NSString *path2 = [NSString stringWithFormat:@"%@/china4.wav", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl2 = [NSURL fileURLWithPath:path2];
+    china4 = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl2 error:nil];
+   
+    
+    NSString *path3 = [NSString stringWithFormat:@"%@/idc.wav", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl3 = [NSURL fileURLWithPath:path3];
+    idc = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl3 error:nil];
+    NSString *path4 = [NSString stringWithFormat:@"%@/wall1.wav", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl4 = [NSURL fileURLWithPath:path4];
+    wall1 = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl4 error:nil];
+    NSString *path5 = [NSString stringWithFormat:@"%@/highlyInappropriate.wav", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl5 = [NSURL fileURLWithPath:path5];
+    highlyInapropriate = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl5 error:nil];
+    NSString *path6 = [NSString stringWithFormat:@"%@/waterSound.mp3", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl6 = [NSURL fileURLWithPath:path6];
+    water = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl6 error:nil];
+    
+    /*
     NSString *soundPath6 = [[NSBundle mainBundle] pathForResource:@"idc" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath6], &(idc));
     NSString *soundPath8 = [[NSBundle mainBundle] pathForResource:@"wall1" ofType:@"wav"];
@@ -394,7 +441,7 @@
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath4], &(sound2));
     NSString *soundPath5 = [[NSBundle mainBundle] pathForResource:@"smallSound3" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath5], &(sound3));
-    
+    */
     
     
     trumpState = 0;

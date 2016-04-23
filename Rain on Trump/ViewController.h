@@ -34,6 +34,8 @@
 
     float hillaryScale;
     
+    
+    /*
     SystemSoundID water;
     SystemSoundID idc;
     SystemSoundID wall;
@@ -46,7 +48,7 @@
     SystemSoundID china1;
     SystemSoundID china_;
     SystemSoundID china4;
-
+*/
     
 }
 
