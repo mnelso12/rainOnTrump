@@ -24,6 +24,10 @@
     AVAudioPlayer *idc;
     AVAudioPlayer *wall1;
     AVAudioPlayer *highlyInapropriate;
+    AVAudioPlayer *cutGovtSpending;
+    AVAudioPlayer *itsGoingToEnd;
+    AVAudioPlayer *imReallyRich;
+    AVAudioPlayer *outOfControl;
     
 }
 
@@ -60,28 +64,29 @@
             
             if (prevStateInt == 1)
             {
+                [water play];
                 //NSLog(@"playing sound!");
                 int randNum = arc4random_uniform(100);
-                if (randNum > 60)
+                if (randNum > 90)
                 {
                     //AudioServicesPlaySystemSound(grunt1); // short and high
                     //AudioServicesPlaySystemSound(idc);
                     //AudioServicesPlaySystemSound(china4);
                     [china4 play];
                 }
-                else if (randNum > 55)
+                else if (randNum > 80)
                 {
                     //AudioServicesPlaySystemSound(idc);
                     [idc play];
                 }
-                else if (randNum > 40)
+                else if (randNum > 70)
                 {
                     ////////////////AudioServicesPlaySystemSound(grunt2); // lower
                     //AudioServicesPlaySystemSound(sound3); // two noises, kinda low
                     //AudioServicesPlaySystemSound(china1);
                     [china play];
                 }
-                else if (randNum > 15)
+                else if (randNum > 60)
                 {
                     ////////////AudioServicesPlaySystemSound(sound2); // two noises
                     //AudioServicesPlaySystemSound(sound1); // good one
@@ -89,10 +94,26 @@
                     //AudioServicesPlaySystemSound(china_);
                     [china_ play];
                 }
-                else if (randNum >11)
+                else if (randNum > 50)
                 {
                     //AudioServicesPlaySystemSound(highlyInappropriate);
                     [highlyInapropriate play];
+                }
+                else if (randNum > 40)
+                {
+                    [imReallyRich play];
+                }
+                else if (randNum > 30)
+                {
+                    [itsGoingToEnd play];
+                }
+                else if (randNum > 20)
+                {
+                    [cutGovtSpending play];
+                }
+                else if (randNum > 10)
+                {
+                    [outOfControl play];
                 }
                 else
                 {
@@ -100,7 +121,6 @@
                     [wall1 play];
                 }
                 //AudioServicesPlaySystemSound(water);
-                [water play];
             }
             
             //NSLog(@"prev state int = %i", prevStateInt);
@@ -387,18 +407,6 @@
     [self.view setBackgroundColor:[UIColor blackColor]];
     
    
-    
-    
-    
-    //NSString *soundPath0 = [[NSBundle mainBundle] pathForResource:@"china" ofType:@"wav"];
-    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath0], &(china1));
-    //NSString *soundPath10 = [[NSBundle mainBundle] pathForResource:@"china_" ofType:@"wav"];
-    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath10], &(china_));
-    //NSString *soundPath11 = [[NSBundle mainBundle] pathForResource:@"china4" ofType:@"wav"];
-    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath11], &(china4));
-    //NSString *soundPath1 = [[NSBundle mainBundle] pathForResource:@"grunt1" ofType:@"wav"];
-    //AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath1], &(grunt1));
-    
     NSString *path = [NSString stringWithFormat:@"%@/china.wav", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     china = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
@@ -423,16 +431,23 @@
     NSURL *soundUrl6 = [NSURL fileURLWithPath:path6];
     water = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl6 error:nil];
     
-    /*
-    NSString *soundPath6 = [[NSBundle mainBundle] pathForResource:@"idc" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath6], &(idc));
-    NSString *soundPath8 = [[NSBundle mainBundle] pathForResource:@"wall1" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath8], &(wall));
-    NSString *soundPath7 = [[NSBundle mainBundle] pathForResource:@"highlyInappropriate" ofType:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath7], &(highlyInappropriate));
-    NSString *soundPath9 = [[NSBundle mainBundle] pathForResource:@"waterSound" ofType:@"mp3"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath9], &(water));
     
+    
+    NSString *path7 = [NSString stringWithFormat:@"%@/cutGovtSpending.mp3", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl7 = [NSURL fileURLWithPath:path7];
+    cutGovtSpending = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl7 error:nil];
+    NSString *path8 = [NSString stringWithFormat:@"%@/itsGoingToEnd.mp3", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl8 = [NSURL fileURLWithPath:path8];
+    itsGoingToEnd = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl8 error:nil];
+    NSString *path9 = [NSString stringWithFormat:@"%@/imReallyRich.mp3", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl9 = [NSURL fileURLWithPath:path9];
+    imReallyRich = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl9 error:nil];
+    NSString *path10 = [NSString stringWithFormat:@"%@/outOfControl.mp3", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl10 = [NSURL fileURLWithPath:path10];
+    outOfControl = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl10 error:nil];
+
+    
+    /*
     NSString *soundPath2 = [[NSBundle mainBundle] pathForResource:@"grunt2-2" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath2], &(grunt2));
     NSString *soundPath3 = [[NSBundle mainBundle] pathForResource:@"smallSound1" ofType:@"wav"];

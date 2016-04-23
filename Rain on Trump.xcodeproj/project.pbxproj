@@ -32,6 +32,10 @@
 		5A83D4691CB700B700C0EED5 /* drawing6-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A83D4641CB700B700C0EED5 /* drawing6-1.png */; };
 		5A83D46A1CB700B700C0EED5 /* drawing7-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A83D4651CB700B700C0EED5 /* drawing7-1.png */; };
 		5A83D46B1CB700B700C0EED5 /* drawing5-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A83D4661CB700B700C0EED5 /* drawing5-1.png */; };
+		5A93B10E1CCAFF0300B91EB8 /* cutGovtSpending.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B10D1CCAFF0300B91EB8 /* cutGovtSpending.mp3 */; };
+		5A93B1101CCAFF5000B91EB8 /* outOfControl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B10F1CCAFF5000B91EB8 /* outOfControl.mp3 */; };
+		5A93B1121CCAFFA500B91EB8 /* imReallyRich.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1111CCAFFA500B91EB8 /* imReallyRich.mp3 */; };
+		5A93B1141CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */; };
 		5AEF028D1CAECA6C00B88ACC /* grunt2.flac in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028C1CAECA6C00B88ACC /* grunt2.flac */; };
 		5AEF028F1CAECC4600B88ACC /* grunt2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF028E1CAECC4600B88ACC /* grunt2.wav */; };
 		5AEF02911CAECE7D00B88ACC /* grunt2-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */; };
@@ -93,6 +97,10 @@
 		5A83D4641CB700B700C0EED5 /* drawing6-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "drawing6-1.png"; path = "../../../Downloads/drawing6-1.png"; sourceTree = "<group>"; };
 		5A83D4651CB700B700C0EED5 /* drawing7-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "drawing7-1.png"; path = "../../../Downloads/drawing7-1.png"; sourceTree = "<group>"; };
 		5A83D4661CB700B700C0EED5 /* drawing5-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "drawing5-1.png"; path = "../../../Downloads/drawing5-1.png"; sourceTree = "<group>"; };
+		5A93B10D1CCAFF0300B91EB8 /* cutGovtSpending.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cutGovtSpending.mp3; sourceTree = "<group>"; };
+		5A93B10F1CCAFF5000B91EB8 /* outOfControl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = outOfControl.mp3; sourceTree = "<group>"; };
+		5A93B1111CCAFFA500B91EB8 /* imReallyRich.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = imReallyRich.mp3; sourceTree = "<group>"; };
+		5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itsGoingToEnd.mp3; sourceTree = "<group>"; };
 		5AEF028C1CAECA6C00B88ACC /* grunt2.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = grunt2.flac; sourceTree = "<group>"; };
 		5AEF028E1CAECC4600B88ACC /* grunt2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grunt2.wav; sourceTree = "<group>"; };
 		5AEF02901CAECE7D00B88ACC /* grunt2-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "grunt2-2.wav"; sourceTree = "<group>"; };
@@ -139,6 +147,10 @@
 		5A3D6DC31CAF66350081F1D9 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				5A93B10D1CCAFF0300B91EB8 /* cutGovtSpending.mp3 */,
+				5A93B1131CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 */,
+				5A93B1111CCAFFA500B91EB8 /* imReallyRich.mp3 */,
+				5A93B10F1CCAFF5000B91EB8 /* outOfControl.mp3 */,
 				5AEF02961CAED4BF00B88ACC /* smallSound2.wav */,
 				5AEF02981CAED53000B88ACC /* smallSound3.wav */,
 				5AEF028E1CAECC4600B88ACC /* grunt2.wav */,
@@ -331,10 +343,12 @@
 				5A2920641CBAA81500DE19AA /* highlyInappropriate.wav in Resources */,
 				5AFF4A341CC3236400B4AD94 /* trumpNew2-neutral.png in Resources */,
 				5A29206A1CBABB9A00DE19AA /* waterSound.mp3 in Resources */,
+				5A93B1101CCAFF5000B91EB8 /* outOfControl.mp3 in Resources */,
 				5A5D89971CAD847900EFAA02 /* Main.storyboard in Resources */,
 				5AEF029B1CAED71D00B88ACC /* smallSound4.wav in Resources */,
 				5A2920661CBAB03800DE19AA /* wall1.wav in Resources */,
 				5A83D4671CB700B700C0EED5 /* drawing9-1.png in Resources */,
+				5A93B1121CCAFFA500B91EB8 /* imReallyRich.mp3 in Resources */,
 				5AFF4A311CC3225500B4AD94 /* AppIcon.appiconset in Resources */,
 				5A5D89B81CAD9FB200EFAA02 /* cloud1.png in Resources */,
 				5A5D899C1CAD847900EFAA02 /* LaunchScreen.xib in Resources */,
@@ -342,7 +356,9 @@
 				5A23F7901CB0675C002C0D40 /* hillaryDrop.png in Resources */,
 				5A83D46B1CB700B700C0EED5 /* drawing5-1.png in Resources */,
 				5A2920631CBAA81500DE19AA /* idc.wav in Resources */,
+				5A93B1141CCAFFDD00B91EB8 /* itsGoingToEnd.mp3 in Resources */,
 				5A5D89C21CAE094400EFAA02 /* grunt1.wav in Resources */,
+				5A93B10E1CCAFF0300B91EB8 /* cutGovtSpending.mp3 in Resources */,
 				5AEF02931CAED3D700B88ACC /* bigSoundFile.wav in Resources */,
 				5AFCEC081CAF502A0016EDD1 /* china.wav in Resources */,
 				5AEF02911CAECE7D00B88ACC /* grunt2-2.wav in Resources */,
