@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Firebase.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Rain on Trump.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Rain on TrumpTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0B3A02D85BB8F8FD4181F9684265D2B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2043AD8A2655B239FB04912CEDA56616</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A94976411318FE93AF41B0D95BB8F5BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9514AB4C3F27CA1905CCBD14FC10965</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

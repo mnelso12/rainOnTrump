@@ -13,6 +13,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
 
 @interface ViewController ()
 {
@@ -328,6 +329,7 @@
     
     count++;
     [countLabel setText:[NSString stringWithFormat:@"%i",count]];
+    [self updateTotalDropsByOne];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", count] forKey:@"score"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -464,6 +466,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
     [self.view setBackgroundColor:[UIColor blackColor]];
     sw = [[UIScreen mainScreen] bounds].size.width;
     sh = [[UIScreen mainScreen] bounds].size.height;
@@ -590,8 +593,93 @@
         [countLabel setText:[NSString stringWithFormat:@"%i", count]];
     }
     
-
+    
+    
+    // give this new user a uuid for firebase
+    myRootRef = [[Firebase alloc] initWithUrl:@"https://rain-on-trump.firebaseio.com"];
+    usersRef = [myRootRef childByAppendingPath: @"users"];
+    totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    
+    if (![[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]) // is first time in system, make them a new uuid and store it in defaults
+    {
+        uuid = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
+        [self updateTotalDropsWithScore];
+    }
+    else // is already in system, just get this user's uuid from defaults
+    {
+        uuid = [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"];
+    }
+    NSLog(@"my uuid: %@", uuid);
+    
+    usersRef = [usersRef childByAppendingPath: uuid];
+    
 }
+
+
+
+/////////// FIREBASE STUFF ////////////////////////
+
+
+
+- (void)updateUserInfo
+{
+    [thisUserRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
+    }];
+    NSDictionary *thisUser = @{
+                               @"displayName" : @"Madelynnn",
+                               @"score": [NSString stringWithFormat:@"%i", count],
+                               @"level": @"-1",
+                               @"isTopTen": @"yes",
+                               @"numFbShares": @"0",
+                               @"numTwShares": @"0"};
+    [thisUserRef setValue: thisUser];
+}
+
+- (void)updateTotalDropsByOne
+{
+    __block NSString *prevTotal;
+    // get previous 'total hits'
+    [totalsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        prevTotal = snapshot.value[@"totalDrops"];
+    }];
+    
+    NSLog(@"prevTotal: %@", prevTotal);
+    // add 1 to total drops
+    NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotal intValue] + 1];
+    NSDictionary *tempTotals = @{
+                                 @"totalDrops": newTotal
+                                 };
+    [totalsRef setValue: tempTotals];
+   
+}
+
+- (void)updateTotalDropsWithScore
+{
+    __block NSString *prevTotal;
+    // get previous 'total hits'
+    [totalsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        prevTotal = snapshot.value[@"totalDrops"];
+        
+        // add high score to total drops
+        NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotal intValue] + count];
+        NSDictionary *tempTotals = @{
+                                     @"totalDrops": newTotal
+                                     };
+        [totalsRef setValue: tempTotals];
+    }];
+    
+}
+
+
+
+//////////////////////////////////////////////////////////
+
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

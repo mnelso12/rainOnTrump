@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F3D87564AC7FDF900DB6ECA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0FA0D39AF23BCC99537C4 /* libPods.a */; };
 		5A2331C01CC342D20018E93C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFCEC031CAF2C740016EDD1 /* Foundation.framework */; };
 		5A23F78F1CB0675C002C0D40 /* kellyDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F7891CB0675C002C0D40 /* kellyDrop.png */; };
 		5A23F7901CB0675C002C0D40 /* hillaryDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F78A1CB0675C002C0D40 /* hillaryDrop.png */; };
@@ -70,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		217409BFBC0F2468E05D4525 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		50C0FA0D39AF23BCC99537C4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A23F7891CB0675C002C0D40 /* kellyDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kellyDrop.png; path = ../../../Downloads/kellyDrop.png; sourceTree = "<group>"; };
 		5A23F78A1CB0675C002C0D40 /* hillaryDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hillaryDrop.png; path = ../../../Downloads/hillaryDrop.png; sourceTree = "<group>"; };
 		5A2920611CBAA81500DE19AA /* idc.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = idc.wav; path = ../../../Downloads/idc.wav; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		5AFF4A331CC3236400B4AD94 /* trumpNew2-talking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trumpNew2-talking.png"; path = "../../../Downloads/trumpNew2-talking.png"; sourceTree = "<group>"; };
 		5AFF4A361CC32F4400B4AD94 /* china_.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = china_.wav; path = ../../../Downloads/china_.wav; sourceTree = "<group>"; };
 		5AFF4A371CC32F4400B4AD94 /* china4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = china4.wav; path = ../../../Downloads/china4.wav; sourceTree = "<group>"; };
+		F277E7FB3EF7E8DBFD3E2DD9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 				5AFCEC021CAF2C6C0016EDD1 /* UIKit.framework in Frameworks */,
 				5AFCEC001CAF2C680016EDD1 /* CoreGraphics.framework in Frameworks */,
 				5AFCEBFE1CAF2C5D0016EDD1 /* iAd.framework in Frameworks */,
+				2F3D87564AC7FDF900DB6ECA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +155,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40F12592BB845698D9DD2F3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50C0FA0D39AF23BCC99537C4 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5A3D6DC31CAF66350081F1D9 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +219,8 @@
 				5A5D898A1CAD847800EFAA02 /* Rain on Trump */,
 				5A5D89A41CAD847900EFAA02 /* Rain on TrumpTests */,
 				5A5D89891CAD847800EFAA02 /* Products */,
+				EC76DFADEA5B264518CB59DF /* Pods */,
+				40F12592BB845698D9DD2F3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,6 +283,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC76DFADEA5B264518CB59DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F277E7FB3EF7E8DBFD3E2DD9 /* Pods.debug.xcconfig */,
+				217409BFBC0F2468E05D4525 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,9 +299,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A5D89AB1CAD847900EFAA02 /* Build configuration list for PBXNativeTarget "Rain on Trump" */;
 			buildPhases = (
+				DA1EDEB813E9DCABC502DDED /* Check Pods Manifest.lock */,
 				5A5D89841CAD847800EFAA02 /* Sources */,
 				5A5D89851CAD847800EFAA02 /* Frameworks */,
 				5A5D89861CAD847800EFAA02 /* Resources */,
+				E220622C2893CD5AE3C55B72 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -402,6 +428,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DA1EDEB813E9DCABC502DDED /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E220622C2893CD5AE3C55B72 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5A5D89841CAD847800EFAA02 /* Sources */ = {
@@ -538,6 +597,7 @@
 		};
 		5A5D89AC1CAD847900EFAA02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F277E7FB3EF7E8DBFD3E2DD9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -551,6 +611,7 @@
 		};
 		5A5D89AD1CAD847900EFAA02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 217409BFBC0F2468E05D4525 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";

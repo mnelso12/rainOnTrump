@@ -10,11 +10,17 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <iAd/iAd.h>
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
 
 @interface ViewController : UIViewController<ADBannerViewDelegate, UIAlertViewDelegate>
 {
     int count;
     IBOutlet UILabel *countLabel;
+    NSString *uuid;
+    Firebase *myRootRef;
+    Firebase *usersRef;
+    Firebase *thisUserRef;
+    Firebase *totalsRef;
     
     IBOutlet UIImageView *trump;
     IBOutlet UIImageView *cloud;
@@ -25,6 +31,7 @@
     
     UIView *adFrame;
     
+    // leaderboard stuff
     UIView *leaderboard;
     UILabel *leaderboardTitle;
     UILabel *leaderboardTotal;
@@ -45,7 +52,9 @@
 
     float hillaryScale;
     CGFloat sw, sh;
-
+    
+    //NSString *prevTotal;
+    
 }
 
 
