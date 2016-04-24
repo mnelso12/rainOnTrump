@@ -330,8 +330,8 @@
     
     count++;
     [countLabel setText:[NSString stringWithFormat:@"%i",count]];
-    [self getPrevTotalDrops];
     [self updateTotalDropsByOne];
+    [self updateUserInfo];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", count] forKey:@"score"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -600,14 +600,14 @@
     // give this new user a uuid for firebase
     myRootRef = [[Firebase alloc] initWithUrl:@"https://rain-on-trump.firebaseio.com"];
     usersRef = [myRootRef childByAppendingPath: @"users"];
-    totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    //totalsRef = [myRootRef childByAppendingPath: @"totals"];
     
     if (![[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]) // is first time in system, make them a new uuid and store it in defaults
     {
         uuid = [[NSUUID UUID] UUIDString];
         [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
-        [self getPrevTotalDrops];
         [self updateTotalDropsWithScore];
+        [self updateTotalNumUsers];
     }
     else // is already in system, just get this user's uuid from defaults
     {
@@ -616,7 +616,16 @@
     NSLog(@"my uuid: %@", uuid);
     
     usersRef = [usersRef childByAppendingPath: uuid];
+    prevTotalDrops = [[NSString alloc] init];
     
+    
+    // DO NOT DELETE THE LINES BELOW!!!!!!
+    Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    
+    [totalsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        [self setPrevTotalDrops:snapshot.value[@"totalDrops"]];
+    }];
 }
 
 
@@ -627,7 +636,10 @@
 
 - (void)updateUserInfo
 {
-    [thisUserRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    Firebase *thisUserRef2 = [usersRef childByAppendingPath: uuid];
+    
+    NSLog(@"updating user info");
+    [thisUserRef2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
     }];
     NSDictionary *thisUser = @{
@@ -637,11 +649,40 @@
                                @"isTopTen": @"yes",
                                @"numFbShares": @"0",
                                @"numTwShares": @"0"};
-    [thisUserRef setValue: thisUser];
+    [usersRef setValue:thisUser];
 }
+
+- (void)updateTotalNumUsers
+{
+    Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    Firebase *totalUsersRef = [totalsRef childByAppendingPath: @"totalUsers"];
+    NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalUsers intValue] + 1];
+    // add one to total num of users
+    [totalUsersRef setValue: newTotal];
+}
+
+- (void)getPrevTotalUsers
+{
+    Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    
+    [totalsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        [self setPrevTotalUsers:snapshot.value[@"totalUsers"]];
+    }];
+    
+}
+
+- (void)setPrevTotalUsers:(NSString *)prevTotalUsersFromDB
+{
+    NSLog(@"received prevTotalUsers = %@", prevTotalUsersFromDB);
+    prevTotalUsers = prevTotalUsersFromDB;
+}
+
 
 - (void)getPrevTotalDrops
 {
+    Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    
     [totalsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
         [self setPrevTotalDrops:snapshot.value[@"totalDrops"]];
@@ -651,28 +692,39 @@
 
 - (void)setPrevTotalDrops:(NSString *)prevTotalDropsFromDB
 {
+    NSLog(@"received prevTotalDrops = %@", prevTotalDropsFromDB);
     prevTotalDrops = prevTotalDropsFromDB;
 }
 
 - (void)updateTotalDropsByOne
 {
+    [self getPrevTotalDrops];
+   
+    Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    Firebase *totalDropsRef = [totalsRef childByAppendingPath: @"totalDrops"];
+    
     // add 1 to total drops
     NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalDrops intValue] + 1];
-    NSDictionary *tempTotals = @{
-                                 @"totalDrops": newTotal
-                                 };
-    [totalsRef setValue: tempTotals];
+    [totalDropsRef setValue: newTotal];
+    
+    NSLog(@"total drops: %@ + 1 = %@", prevTotalDrops, newTotal);
    
 }
 
 - (void)updateTotalDropsWithScore
 {
+    [self getPrevTotalDrops];
+    
+    Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+    Firebase *totalDropsRef = [totalsRef childByAppendingPath: @"totalDrops"];
+    
         // add high score to total drops
         NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalDrops intValue] + count];
-        NSDictionary *tempTotals = @{
-                                     @"totalDrops": newTotal
-                                     };
-        [totalsRef setValue: tempTotals];
+        //NSDictionary *tempTotals = @{
+        //                             @"totalDrops": newTotal
+        //                             };
+        //[totalsRef setValue: tempTotals];
+    [totalDropsRef setValue: newTotal];
 }
 
 

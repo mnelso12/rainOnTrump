@@ -20,8 +20,9 @@
     Firebase *myRootRef;
     Firebase *usersRef;
     Firebase *thisUserRef;
-    Firebase *totalsRef;
+    //Firebase *totalsRef;
     NSString *prevTotalDrops;
+    NSString *prevTotalUsers;
     
     IBOutlet UIImageView *trump;
     IBOutlet UIImageView *cloud;
