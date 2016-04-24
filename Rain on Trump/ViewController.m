@@ -14,6 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
+#import <Foundation/Foundation.h>
 
 @interface ViewController ()
 {
@@ -329,6 +330,7 @@
     
     count++;
     [countLabel setText:[NSString stringWithFormat:@"%i",count]];
+    [self getPrevTotalDrops];
     [self updateTotalDropsByOne];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", count] forKey:@"score"];
@@ -604,6 +606,7 @@
     {
         uuid = [[NSUUID UUID] UUIDString];
         [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
+        [self getPrevTotalDrops];
         [self updateTotalDropsWithScore];
     }
     else // is already in system, just get this user's uuid from defaults
@@ -637,18 +640,24 @@
     [thisUserRef setValue: thisUser];
 }
 
-- (void)updateTotalDropsByOne
+- (void)getPrevTotalDrops
 {
-    __block NSString *prevTotal;
-    // get previous 'total hits'
     [totalsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
-        prevTotal = snapshot.value[@"totalDrops"];
+        [self setPrevTotalDrops:snapshot.value[@"totalDrops"]];
     }];
-    
-    NSLog(@"prevTotal: %@", prevTotal);
+
+}
+
+- (void)setPrevTotalDrops:(NSString *)prevTotalDropsFromDB
+{
+    prevTotalDrops = prevTotalDropsFromDB;
+}
+
+- (void)updateTotalDropsByOne
+{
     // add 1 to total drops
-    NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotal intValue] + 1];
+    NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalDrops intValue] + 1];
     NSDictionary *tempTotals = @{
                                  @"totalDrops": newTotal
                                  };
@@ -658,20 +667,12 @@
 
 - (void)updateTotalDropsWithScore
 {
-    __block NSString *prevTotal;
-    // get previous 'total hits'
-    [totalsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
-        prevTotal = snapshot.value[@"totalDrops"];
-        
         // add high score to total drops
-        NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotal intValue] + count];
+        NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalDrops intValue] + count];
         NSDictionary *tempTotals = @{
                                      @"totalDrops": newTotal
                                      };
         [totalsRef setValue: tempTotals];
-    }];
-    
 }
 
 

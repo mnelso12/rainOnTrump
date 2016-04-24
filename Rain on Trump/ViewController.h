@@ -21,6 +21,7 @@
     Firebase *usersRef;
     Firebase *thisUserRef;
     Firebase *totalsRef;
+    NSString *prevTotalDrops;
     
     IBOutlet UIImageView *trump;
     IBOutlet UIImageView *cloud;
