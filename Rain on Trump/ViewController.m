@@ -329,7 +329,7 @@
     [self.view bringSubviewToFront:leaderboardButton];
     
     count++;
-    [countLabel setText:[NSString stringWithFormat:@"%i",count]];
+    [countLabel setText:[self addCommas:[NSString stringWithFormat:@"%i", count]]git ];
     [self updateTotalDropsByOne];
     [self updateUserInfo];
     
@@ -362,6 +362,12 @@
     [iv setFrame:CGRectMake(oldCenter.x, oldCenter.y, hillaryScale*50, hillaryScale*65)];
     hillaryScale = 1.;
     [sizeTimer invalidate];
+}
+
+- (NSString *)addCommas:(NSString *)oldString
+{
+    return [NSNumberFormatter localizedStringFromNumber:@([oldString intValue])
+                                                         numberStyle:NSNumberFormatterDecimalStyle];
 }
 
 - (void)loadLeaderboard
@@ -409,7 +415,7 @@
     [leaderboardTotal setTextColor:[UIColor whiteColor]];
     [leaderboardTotal setFont:[UIFont fontWithName:@"Verdana-Bold" size:20]];
     [leaderboardTotal setTextAlignment:NSTextAlignmentCenter];
-    [leaderboardTotal setText:@"Total Hits: 10,293,823"];
+    [leaderboardTotal setText:[NSString stringWithFormat:@"%@%@",@"Total Hits: ", [self addCommas:prevTotalDrops]]];
     [leaderboard addSubview:leaderboardTotal];
     
     leaderboardShareLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, sh - 90 - 55, sw*.8, 35)];
@@ -467,7 +473,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     
     [self.view setBackgroundColor:[UIColor blackColor]];
     sw = [[UIScreen mainScreen] bounds].size.width;
