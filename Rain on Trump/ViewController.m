@@ -602,11 +602,14 @@
     usersRef = [myRootRef childByAppendingPath: @"users"];
     //totalsRef = [myRootRef childByAppendingPath: @"totals"];
     
+    [self getPrevTotalDrops];
+    [self getPrevTotalUsers];
+    
     if (![[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]) // is first time in system, make them a new uuid and store it in defaults
     {
         uuid = [[NSUUID UUID] UUIDString];
         [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
-        [self updateTotalDropsWithScore];
+        //[self updateTotalDropsWithScore];
         [self updateTotalNumUsers];
     }
     else // is already in system, just get this user's uuid from defaults
@@ -643,10 +646,10 @@
         NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
     }];
     NSDictionary *thisUser = @{
-                               @"displayName" : @"Madelynnn",
+                               @"displayName" : @"5s simulator (2)",
                                @"score": [NSString stringWithFormat:@"%i", count],
                                @"level": @"-1",
-                               @"isTopTen": @"yes",
+                               @"isTopTen": @"no",
                                @"numFbShares": @"0",
                                @"numTwShares": @"0"};
     [usersRef setValue:thisUser];
@@ -654,6 +657,9 @@
 
 - (void)updateTotalNumUsers
 {
+    NSLog(@"upating total num users");
+    [self getPrevTotalUsers];
+    //[self getPrevTotalUsers];
     Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
     Firebase *totalUsersRef = [totalsRef childByAppendingPath: @"totalUsers"];
     NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalUsers intValue] + 1];
@@ -698,6 +704,8 @@
 
 - (void)updateTotalDropsByOne
 {
+    NSLog(@"updating total drops by one");
+    [self getPrevTotalDrops];
     [self getPrevTotalDrops];
    
     Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
@@ -713,7 +721,9 @@
 
 - (void)updateTotalDropsWithScore
 {
+    NSLog(@"dating total drops with current score stored in defaults");
     [self getPrevTotalDrops];
+    //[self getPrevTotalDrops];
     
     Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
     Firebase *totalDropsRef = [totalsRef childByAppendingPath: @"totalDrops"];
@@ -725,6 +735,8 @@
         //                             };
         //[totalsRef setValue: tempTotals];
     [totalDropsRef setValue: newTotal];
+    
+    NSLog(@"total drops: %@ + (score)%i = %@", prevTotalDrops, count, newTotal);
 }
 
 
