@@ -15,6 +15,11 @@
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
 #import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import "Reachability.h"
+
 
 @interface ViewController ()
 {
@@ -318,7 +323,8 @@
     UIImageView *tempHillary = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     //[tempHillary setFrame:CGRectMake(0, 0, 50, 65)];
     [tempHillary setFrame:CGRectMake(0, 0, 80, 100)];
-    [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 60)];
+    //[tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 60)]; // from when there was a status bar
+    [tempHillary setCenter:CGPointMake([myTouch locationInView:self.view].x, 40)];
     [tempHillary setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:tempHillary];
     [self.view bringSubviewToFront:tempHillary];
@@ -372,6 +378,13 @@
 
 - (void)loadLeaderboard
 {
+    if (![self foundNetworkConnetion]) // no wifi
+    {
+        [self noWifiAlertView];
+        [leaderboardButton setBackgroundImage:[UIImage imageNamed:@"trophy1.png"] forState:UIControlStateNormal];
+        return; // no leaderboard if no wifi
+    }
+    
     isPaused = YES;
     
     leaderboard = [[UIView alloc] initWithFrame:CGRectMake(sw*.05, sh*.05, sw*.9, sh - 90)];
@@ -548,10 +561,13 @@
     CGSize screenSize      = [[UIScreen mainScreen] bounds].size;
     CGFloat widthOfScreen  = screenSize.width;
     CGFloat heightOfScreen = screenSize.height;
-    cloud = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, widthOfScreen, 100)];
+    
+    cloud = [[UIImageView alloc] initWithFrame:CGRectMake(0, 12, widthOfScreen, 100)];
+    // cloud = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, widthOfScreen, 100)]; // old one from when there was a status bar
     [cloud setImage:[UIImage imageNamed:@"cloud1.png"]];
     
-    countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, widthOfScreen, 60)];
+    // countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, widthOfScreen, 60)]; // old one from when there was a status bar
+    countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, widthOfScreen, 60)];
     [countLabel setFont:[UIFont fontWithName:@"Verdana" size:32]];
     [countLabel setTextColor:[UIColor whiteColor]];
     [countLabel setTextAlignment:NSTextAlignmentCenter];
@@ -788,6 +804,14 @@
     [alertView show];
 }
 
+- (void)noWifiAlertView
+{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
+                              @"Oh no!" message:@"Your device couldn't connect to the internet. Make sure your wifi is turned on." delegate:self
+                                             cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
 -(void)addAlertView
 {
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
@@ -882,7 +906,15 @@
     [self resignFirstResponder];
     [super viewWillDisappear:animated];
 }
-*/g
+*/
+
+- (BOOL)foundNetworkConnetion
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return networkStatus != NotReachable;
+}
+
 -(BOOL)canBecomeFirstResponder {
     return YES;
 }
