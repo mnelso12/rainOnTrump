@@ -563,23 +563,23 @@
     
     float trumpRatio = 270./375.; // height/width
     
-    trump = [[UIImageView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen, widthOfScreen, trumpRatio*widthOfScreen)];
-    //trump = [[UIImageView alloc] initWithFrame:CGRectMake(0, heightOfScreen-trumpRatio*widthOfScreen, widthOfScreen, trumpRatio*widthOfScreen)];
+    //trump = [[UIImageView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen, widthOfScreen, trumpRatio*widthOfScreen)];
+    trump = [[UIImageView alloc] initWithFrame:CGRectMake(0, heightOfScreen-trumpRatio*widthOfScreen, widthOfScreen, trumpRatio*widthOfScreen)];
     [self.view addSubview:trump];
     
     
     // make trump outline uiviews
     
-    
+    /*
     trumpOutline1 = [[UIView alloc] initWithFrame:CGRectMake(0, heightOfScreen-50-trumpRatio*widthOfScreen*.38, widthOfScreen*.5, trumpRatio*widthOfScreen*.38)]; // left shoulder
     trumpOutline3 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5, heightOfScreen-50-trumpRatio*widthOfScreen*.28, widthOfScreen*.5, trumpRatio*widthOfScreen*.28)]; // right shoulder
     trumpOutline2 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5 - 60, heightOfScreen-50-trumpRatio*widthOfScreen, 120, trumpRatio*widthOfScreen*.5)]; // head
+    */
     
-    /*
     trumpOutline1 = [[UIView alloc] initWithFrame:CGRectMake(0, heightOfScreen-trumpRatio*widthOfScreen*.38, widthOfScreen*.5, trumpRatio*widthOfScreen*.38)]; // left shoulder
     trumpOutline3 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5, heightOfScreen-trumpRatio*widthOfScreen*.28, widthOfScreen*.5, trumpRatio*widthOfScreen*.28)]; // right shoulder
     trumpOutline2 = [[UIView alloc] initWithFrame:CGRectMake(widthOfScreen*.5 - 60, heightOfScreen-trumpRatio*widthOfScreen, 120, trumpRatio*widthOfScreen*.5)]; // head
-     */
+     
     [self.view addSubview:trumpOutline1];
     [self.view addSubview:trumpOutline2];
     [self.view addSubview:trumpOutline3];
@@ -620,6 +620,7 @@
     else // is already in system, just get this user's uuid from defaults
     {
         uuid = [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"];
+        username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
     }
     NSLog(@"my uuid: %@", uuid);
     
@@ -650,6 +651,14 @@
     [thisUserRef2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
     }];
+    
+    if (!username) // this happens for old users (before this update with Firebase) who exist but don't have a username yet
+    {
+        NSLog(@"calling add alert view for username for an old user");
+        [self addAlertView];
+        return; // will update user info later anyway
+    }
+    
     NSDictionary *thisUser = @{
                                @"displayName" : username,
                                @"score": [NSString stringWithFormat:@"%i", count],
@@ -767,7 +776,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 //////////////// handle alert view stuff ///////////////////////////////////////////////
 
@@ -812,6 +824,8 @@
         default:
             break;
     }
+    [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (int)checkUsernameValid:(NSString *)name
