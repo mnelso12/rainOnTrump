@@ -329,7 +329,7 @@
     [self.view bringSubviewToFront:leaderboardButton];
     
     count++;
-    [countLabel setText:[self addCommas:[NSString stringWithFormat:@"%i", count]]git ];
+    [countLabel setText:[self addCommas:[NSString stringWithFormat:@"%i", count]]];
     [self updateTotalDropsByOne];
     [self updateUserInfo];
     
@@ -479,7 +479,6 @@
     sh = [[UIScreen mainScreen] bounds].size.height;
     
     [self loadTrophyButton];
-    //[self addAlertView];
    
     NSString *path = [NSString stringWithFormat:@"%@/china.wav", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
@@ -616,6 +615,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
         //[self updateTotalDropsWithScore];
         [self updateTotalNumUsers];
+        [self addAlertView];
     }
     else // is already in system, just get this user's uuid from defaults
     {
@@ -651,7 +651,7 @@
         NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
     }];
     NSDictionary *thisUser = @{
-                               @"displayName" : @"5s simulator (2)",
+                               @"displayName" : username,
                                @"score": [NSString stringWithFormat:@"%i", count],
                                @"level": @"-1",
                                @"isTopTen": @"no",
@@ -767,27 +767,67 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)addAlertView{
+
+
+//////////////// handle alert view stuff ///////////////////////////////////////////////
+
+- (void)diffUsernameAlertView
+{
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
-                              @"Title" message:@"This is a test alert" delegate:self
-                                             cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+                              @"Oops..." message:@"That username is either taken or is too long. Pick a different one." delegate:self
+                                             cancelButtonTitle:@"I'll just be anonymous" otherButtonTitles:@"Okay", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView show];
+}
+
+-(void)addAlertView
+{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
+                              @"Hey there!" message:@"Please enter a username (e.g. Schmed1995):" delegate:self
+                                             cancelButtonTitle:@"I refuse" otherButtonTitles:@"Okay", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:
 (NSInteger)buttonIndex{
+    NSLog(@"%@", [alertView textFieldAtIndex:0].text);
     switch (buttonIndex) {
         case 0:
             NSLog(@"Cancel button clicked");
+            username = @"Anonymous";
             break;
         case 1:
             NSLog(@"OK button clicked");
+            if ([self checkUsernameValid:[alertView textFieldAtIndex:0].text] == 1)
+            {
+                username = [alertView textFieldAtIndex:0].text;
+            }
+            else
+            {
+                [self diffUsernameAlertView];
+            }
             break;
             
         default:
             break;
     }
 }
+
+- (int)checkUsernameValid:(NSString *)name
+{ // right now only checks length... TODO: make it check for matching usernames
+    NSUInteger length = [name length];
+    if (length > 12 || length == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+////////////////////////////////////// handle iAd stuff ///////////////////////////////////////////////////////////
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {

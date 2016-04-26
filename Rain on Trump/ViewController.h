@@ -15,6 +15,7 @@
 @interface ViewController : UIViewController<ADBannerViewDelegate, UIAlertViewDelegate>
 {
     int count;
+    NSString *username;
     IBOutlet UILabel *countLabel;
     NSString *uuid;
     Firebase *myRootRef;
