@@ -776,10 +776,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
 
 //////////////// handle alert view stuff ///////////////////////////////////////////////
 
@@ -842,7 +838,7 @@
 }
 
 ////////////////////////////////////// handle iAd stuff ///////////////////////////////////////////////////////////
-
+/*
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
     NSLog(@"ad loaded");
@@ -886,7 +882,7 @@
     [self resignFirstResponder];
     [super viewWillDisappear:animated];
 }
-
+*/g
 -(BOOL)canBecomeFirstResponder {
     return YES;
 }
