@@ -562,7 +562,7 @@
     isPaused = NO;
     timer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(collision) userInfo:nil repeats:YES];
     //timer = [NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(collision) userInfo:nil repeats:YES];
-    
+
     
     
     // put uiimageviews in right spots
@@ -630,6 +630,7 @@
     // give this new user a uuid for firebase
     myRootRef = [[Firebase alloc] initWithUrl:@"https://rain-on-trump.firebaseio.com"];
     usersRef = [myRootRef childByAppendingPath: @"users"];
+    lbRef = [myRootRef childByAppendingPath: @"leaders"];
     //totalsRef = [myRootRef childByAppendingPath: @"totals"];
     
     [self getPrevTotalDrops];
@@ -641,7 +642,7 @@
         uuid = [[NSUUID UUID] UUIDString];
         [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", numDropsNotInTotal] forKey:@"extraDrops"];
-        //[self updateTotalDropsWithScore];
+        [self updateTotalDropsWithScore]; // THIS MIGHT BE AN ISSUE BUT I THINK I FIXED IT
         [self updateTotalNumUsers];
         [self addAlertView];
     }
@@ -664,6 +665,9 @@
         NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
         [self setPrevTotalDrops:snapshot.value[@"totalDrops"]];
     }];
+    
+    
+    [self getLeaderboardFromFB];
 }
 
 
@@ -702,7 +706,7 @@
 {
     NSLog(@"upating total num users");
     [self getPrevTotalUsers];
-    //[self getPrevTotalUsers];
+
     Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
     Firebase *totalUsersRef = [totalsRef childByAppendingPath: @"totalUsers"];
     NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalUsers intValue] + 1];
@@ -753,6 +757,7 @@
     }
 }
 
+/*
 - (void)updateTotalDropsByOne
 {
     NSLog(@"updating total drops by one");
@@ -769,6 +774,7 @@
     NSLog(@"total drops: %@ + 1 = %@", prevTotalDrops, newTotal);
    
 }
+ */
 
 - (void)updateTotalDropsWithExtraDrops // drops that haven't been counted in the total yet, alternate to method above that has to be called every single freakin drop
 {
@@ -806,11 +812,18 @@
 - (void)updateTotalDropsWithScore
 {
     NSLog(@"dating total drops with current score stored in defaults");
+    NSLog(@"updating total drops by extra");
     [self getPrevTotalDrops];
-    //[self getPrevTotalDrops];
+    if (!foundPrevTotalDrops)
+    {
+        [self getPrevTotalDrops];
+    }
     
-    Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
-    Firebase *totalDropsRef = [totalsRef childByAppendingPath: @"totalDrops"];
+    if (foundPrevTotalDrops)
+    {
+
+        Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+        Firebase *totalDropsRef = [totalsRef childByAppendingPath: @"totalDrops"];
     
         // add high score to total drops
         NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalDrops intValue] + count];
@@ -818,12 +831,91 @@
         //                             @"totalDrops": newTotal
         //                             };
         //[totalsRef setValue: tempTotals];
-    [totalDropsRef setValue: newTotal];
+        [totalDropsRef setValue: newTotal];
     
-    NSLog(@"total drops: %@ + (score)%i = %@", prevTotalDrops, count, newTotal);
+        NSLog(@"total drops: %@ + (score)%i = %@", prevTotalDrops, count, newTotal);
+        
+        }
+        else
+        {
+            NSLog(@"didn't find prev total drops yet so couldn't use old score in grand total:(");
+        }
 }
 
+- (void)setLeaderboard:(NSMutableDictionary *)lb
+{
+    NSLog(@"got this leaderboard from FB: %@", [lb description]);
+    currentLb = lb;
+    //lowestScoreInLb = [lb objectForKey:@"8"];
+    //NSLog(@"found lowest score in lb was %@", [lb allKeys]);
+}
 
+- (void)getLeaderboardFromFB
+{
+    
+    [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        [self setLeaderboard:snapshot.value[@"leaders"]];
+    }];
+
+ 
+    /* // BELOW RESETS THE LEADERBOARD TO RANDOS
+     Firebase *leadersRef = [myRootRef childByAppendingPath: @"leaders"];
+    NSDictionary *oneDict = @{
+                                  @"uuid": @"0000000",
+                                  @"username":@"ALEXXX",
+                                  @"score":@"11737"
+                                  };
+    NSDictionary *twoDict = @{
+                              @"uuid": @"0000001",
+                              @"username":@"jpennoyer",
+                              @"score":@"8234"
+                              };
+    NSDictionary *threeDict = @{
+                              @"uuid": @"0000002",
+                              @"username":@"Schmed17",
+                              @"score":@"5432"
+                              };
+    NSDictionary *fourDict = @{
+                              @"uuid": @"0000003",
+                              @"username":@"John Rocha",
+                              @"score":@"4786"
+                              };
+    NSDictionary *fiveDict = @{
+                              @"uuid": @"0000004",
+                              @"username":@"Trumpinator",
+                              @"score":@"4770"
+                              };
+    NSDictionary *sixDict = @{
+                              @"uuid": @"0000005",
+                              @"username":@"LeGinge",
+                              @"score":@"3540"
+                              };
+    NSDictionary *sevenDict = @{
+                              @"uuid": @"0000006",
+                              @"username":@"JackK",
+                              @"score":@"3211"
+                              };
+    NSDictionary *eightDict = @{
+                              @"uuid": @"0000007",
+                              @"username":@"Anonymous",
+                              @"score":@"1260"
+                              };
+    
+    
+    NSDictionary *tempLeaders = @{
+                                 @"1": oneDict,
+                                 @"2": twoDict,
+                                 @"3": threeDict,
+                                 @"4": fourDict,
+                                 @"5": fiveDict,
+                                 @"6": sixDict,
+                                 @"7": sevenDict,
+                                 @"8": eightDict,
+                                 };
+    [leadersRef setValue: tempLeaders];
+     */
+}
 
 //////////////////////////////////////////////////////////
 

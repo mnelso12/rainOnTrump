@@ -23,6 +23,7 @@
     Firebase *usersRef;
     Firebase *thisUserRef;
     Firebase *totalsRef;
+    Firebase *lbRef; // leaderboard ref
     NSString *prevTotalDrops;
     NSString *prevTotalUsers;
     
@@ -47,6 +48,8 @@
     NSMutableArray *leaderScores;
     IBOutlet UIButton *fb;
     BOOL isPaused;
+    NSMutableDictionary *currentLb;
+    int lowestScoreInLb;
     
     int trumpState; 
     
