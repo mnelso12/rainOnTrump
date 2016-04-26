@@ -17,6 +17,7 @@
     int count;
     NSString *username;
     IBOutlet UILabel *countLabel;
+    int numDropsNotInTotal; // drops that haven't been added to the grand total yet
     NSString *uuid;
     Firebase *myRootRef;
     Firebase *usersRef;
@@ -24,6 +25,8 @@
     Firebase *totalsRef;
     NSString *prevTotalDrops;
     NSString *prevTotalUsers;
+    
+    bool foundPrevTotalDrops;
     
     IBOutlet UIImageView *trump;
     IBOutlet UIImageView *cloud;

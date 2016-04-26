@@ -336,8 +336,11 @@
     
     count++;
     [countLabel setText:[self addCommas:[NSString stringWithFormat:@"%i", count]]];
-    [self updateTotalDropsByOne];
-    [self updateUserInfo];
+    numDropsNotInTotal++;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", numDropsNotInTotal] forKey:@"extraDrops"];
+    
+    //[self updateTotalDropsByOne];
+    //[self updateUserInfo];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", count] forKey:@"score"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -386,6 +389,8 @@
     }
     
     isPaused = YES;
+    
+    
     
     leaderboard = [[UIView alloc] initWithFrame:CGRectMake(sw*.05, sh*.05, sw*.9, sh - 90)];
     [leaderboard setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:102./255 alpha:.65]];
@@ -466,6 +471,10 @@
 
 - (IBAction)pressedLeaderboard:(id)sender
 {
+    [self updateTotalDropsWithExtraDrops];
+    numDropsNotInTotal = 0;
+    [self updateUserInfo];
+    
     if (isPaused)
     {
         [leaderboardButton setBackgroundImage:[UIImage imageNamed:@"trophy1.png"] forState:UIControlStateNormal];
@@ -616,6 +625,7 @@
     }
     
     
+    foundPrevTotalDrops = NO;
     
     // give this new user a uuid for firebase
     myRootRef = [[Firebase alloc] initWithUrl:@"https://rain-on-trump.firebaseio.com"];
@@ -627,8 +637,10 @@
     
     if (![[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]) // is first time in system, make them a new uuid and store it in defaults
     {
+        numDropsNotInTotal = 0;
         uuid = [[NSUUID UUID] UUIDString];
         [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", numDropsNotInTotal] forKey:@"extraDrops"];
         //[self updateTotalDropsWithScore];
         [self updateTotalNumUsers];
         [self addAlertView];
@@ -637,11 +649,12 @@
     {
         uuid = [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"];
         username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+        numDropsNotInTotal = [[[NSUserDefaults standardUserDefaults] stringForKey:@"extraDrops"] intValue];
     }
     NSLog(@"my uuid: %@", uuid);
     
     usersRef = [usersRef childByAppendingPath: uuid];
-    prevTotalDrops = [[NSString alloc] init];
+    //prevTotalDrops = [[NSString alloc] init];
     
     
     // DO NOT DELETE THE LINES BELOW!!!!!!
@@ -728,8 +741,16 @@
 
 - (void)setPrevTotalDrops:(NSString *)prevTotalDropsFromDB
 {
-    NSLog(@"received prevTotalDrops = %@", prevTotalDropsFromDB);
-    prevTotalDrops = prevTotalDropsFromDB;
+    if (prevTotalDropsFromDB)
+    {
+        foundPrevTotalDrops = YES;
+        NSLog(@"received prevTotalDrops = %@", prevTotalDropsFromDB);
+        prevTotalDrops = prevTotalDropsFromDB;
+    }
+    else
+    {
+        foundPrevTotalDrops = NO;
+    }
 }
 
 - (void)updateTotalDropsByOne
@@ -748,6 +769,39 @@
     NSLog(@"total drops: %@ + 1 = %@", prevTotalDrops, newTotal);
    
 }
+
+- (void)updateTotalDropsWithExtraDrops // drops that haven't been counted in the total yet, alternate to method above that has to be called every single freakin drop
+{
+    NSLog(@"updating total drops by extra");
+    [self getPrevTotalDrops];
+    if (!foundPrevTotalDrops)
+    {
+        [self getPrevTotalDrops];
+    }
+    
+    if (foundPrevTotalDrops)
+    {
+    
+        Firebase *totalsRef = [myRootRef childByAppendingPath: @"totals"];
+        Firebase *totalDropsRef = [totalsRef childByAppendingPath: @"totalDrops"];
+    
+        // add 1 to total drops
+        NSString *newTotal = [NSString stringWithFormat:@"%i", [prevTotalDrops intValue] + numDropsNotInTotal];
+        [totalDropsRef setValue: newTotal];
+    
+        NSLog(@"total drops: %@ + (drops not in total yet)%i = %@", prevTotalDrops, numDropsNotInTotal, newTotal);
+        foundPrevTotalDrops = NO;
+        numDropsNotInTotal = 0;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", numDropsNotInTotal] forKey:@"extraDrops"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else
+    {
+        NSLog(@"didn't find prev total drops yet");
+    }
+    
+}
+
 
 - (void)updateTotalDropsWithScore
 {
@@ -778,6 +832,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    // if close app, then update total drops too
+    /*
+    [self getPrevTotalDrops];
+    [self getPrevTotalDrops];
+    [self updateTotalDropsWithExtraDrops];
+    [self updateUserInfo];
+    numDropsNotInTotal = 0;
+     */
+    
     [super viewDidAppear:animated];
     [self becomeFirstResponder];
     
