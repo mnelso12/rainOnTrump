@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "739"
-            endingLineNumber = "739"
+            startingLineNumber = "742"
+            endingLineNumber = "742"
             landmarkName = "-getPrevTotalDrops"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "779"
-            endingLineNumber = "779"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
             landmarkName = "-updateTotalDropsWithExtraDrops"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483331301.290225"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "555"
-            endingLineNumber = "555"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483331301.290225"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "-pressedLeaderboard:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483335164.876514"
+            timestampString = "483427165.446391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "928"
-            endingLineNumber = "928"
+            startingLineNumber = "1139"
+            endingLineNumber = "1139"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "681"
-            endingLineNumber = "681"
+            startingLineNumber = "684"
+            endingLineNumber = "684"
             landmarkName = "-updateUserInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "707"
-            endingLineNumber = "707"
+            startingLineNumber = "710"
+            endingLineNumber = "710"
             landmarkName = "-updateTotalNumUsers"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "719"
-            endingLineNumber = "719"
+            startingLineNumber = "722"
+            endingLineNumber = "722"
             landmarkName = "-getPrevTotalUsers"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "730"
-            endingLineNumber = "730"
+            startingLineNumber = "733"
+            endingLineNumber = "733"
             landmarkName = "-setPrevTotalUsers:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "738"
-            endingLineNumber = "738"
+            startingLineNumber = "741"
+            endingLineNumber = "741"
             landmarkName = "-getPrevTotalDrops"
             landmarkType = "5">
             <Locations>
@@ -170,11 +170,11 @@
                   moduleName = "Rain on Trump"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/madelynnelsonadmin/Desktop/Rain%20on%20Trump/Rain%20on%20Trump/ViewController.m"
-                  timestampString = "483329994.882573"
+                  timestampString = "483426684.50682"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "730"
-                  endingLineNumber = "730"
+                  startingLineNumber = "742"
+                  endingLineNumber = "742"
                   offsetFromSymbolStart = "101">
                </Location>
                <Location
@@ -185,11 +185,11 @@
                   moduleName = "Rain on Trump"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/madelynnelsonadmin/Desktop/Rain%20on%20Trump/Rain%20on%20Trump/ViewController.m"
-                  timestampString = "483329994.882757"
+                  timestampString = "483426684.507192"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "730"
-                  endingLineNumber = "730"
+                  startingLineNumber = "742"
+                  endingLineNumber = "742"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "748"
-            endingLineNumber = "748"
+            startingLineNumber = "751"
+            endingLineNumber = "751"
             landmarkName = "-setPrevTotalDrops:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "746"
-            endingLineNumber = "746"
+            startingLineNumber = "749"
+            endingLineNumber = "749"
             landmarkName = "-setPrevTotalDrops:"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "763"
-            endingLineNumber = "763"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
             landmarkName = "@implementation ViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "813"
-            endingLineNumber = "813"
+            startingLineNumber = "816"
+            endingLineNumber = "816"
             landmarkName = "-updateTotalDropsWithScore"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "814"
-            endingLineNumber = "814"
+            startingLineNumber = "817"
+            endingLineNumber = "817"
             landmarkName = "-updateTotalDropsWithScore"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,12 +282,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rain on Trump/ViewController.m"
-            timestampString = "483334656.824334"
+            timestampString = "483425743.524116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "781"
-            endingLineNumber = "781"
+            startingLineNumber = "784"
+            endingLineNumber = "784"
             landmarkName = "-updateTotalDropsWithExtraDrops"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rain on Trump/ViewController.m"
+            timestampString = "483426810.627915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "851"
+            endingLineNumber = "851"
+            landmarkName = "-setLeaderboardValues"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rain on Trump/ViewController.m"
+            timestampString = "483426810.627915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "861"
+            endingLineNumber = "861"
+            landmarkName = "-setLeaderboardValues"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rain on Trump/ViewController.m"
+            timestampString = "483426810.627915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "872"
+            endingLineNumber = "872"
+            landmarkName = "-setLeaderboardValues"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rain on Trump/ViewController.m"
+            timestampString = "483426810.627915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "884"
+            endingLineNumber = "884"
+            landmarkName = "-setLeaderboardValues"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rain on Trump/ViewController.m"
+            timestampString = "483426810.627915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
+            landmarkName = "-setLeaderboardValues"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rain on Trump/ViewController.m"
+            timestampString = "483426810.627915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "888"
+            endingLineNumber = "888"
+            landmarkName = "-setLowestScore:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

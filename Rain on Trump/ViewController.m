@@ -405,10 +405,13 @@
     [leaderboardTitle setTextAlignment:NSTextAlignmentCenter];
     [leaderboard addSubview:leaderboardTitle];
     
+    [self setLeaderboardValues];
+    /*
     // TODO make this real
     leaders = [[NSMutableArray alloc] initWithObjects:@"Jimmy Pennoyer", @"Madelynnn", @"Johnny Rocha", @"John CENA!!!", @"Ryan Busk", @"JustinMcManus", @"Apple Tester", @"Dan Stowe", nil];
     leaderScores = [[NSMutableArray alloc] initWithObjects:@"770,000", @"90,912", @"90,873", @"36,123", @"3,020", @"820", @"120", @"89", nil];
-    
+    */
+     
     for (int i = 0; i < [leaders count]; i++)
     {
         UILabel *tempLeader = [[UILabel alloc] initWithFrame:CGRectMake(15, 50+(30*i), sw*.8, 30)];
@@ -642,7 +645,7 @@
         uuid = [[NSUUID UUID] UUIDString];
         [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"uuid"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%i", numDropsNotInTotal] forKey:@"extraDrops"];
-        [self updateTotalDropsWithScore]; // THIS MIGHT BE AN ISSUE BUT I THINK I FIXED IT
+        //[self updateTotalDropsWithScore]; // THIS MIGHT BE AN ISSUE BUT I THINK I FIXED IT
         [self updateTotalNumUsers];
         [self addAlertView];
     }
@@ -842,24 +845,232 @@
         }
 }
 
-- (void)setLeaderboard:(NSMutableDictionary *)lb
+- (void)setLeaderboardValues
 {
-    NSLog(@"got this leaderboard from FB: %@", [lb description]);
-    currentLb = lb;
-    //lowestScoreInLb = [lb objectForKey:@"8"];
-    //NSLog(@"found lowest score in lb was %@", [lb allKeys]);
+    NSLog(@"one = %@", [oneDict description]);
+    currentLb = [@{
+                  @"one":oneDict,
+                  @"two":twoDict,
+                  @"three":threeDict,
+                  @"four":fourDict,
+                  @"five":fiveDict,
+                  @"six":sixDict,
+                  @"seven":sevenDict,
+                  @"eight":eightDict
+                  } mutableCopy];
+    
+    leaders = [[NSMutableArray alloc] initWithObjects:
+    [oneDict objectForKey:@"username"],
+    [twoDict objectForKey:@"username"],
+    [threeDict objectForKey:@"username"],
+    [fourDict objectForKey:@"username"],
+    [fiveDict objectForKey:@"username"],
+    [sixDict objectForKey:@"username"],
+    [sevenDict objectForKey:@"username"],
+    [eightDict objectForKey:@"username"],
+    nil];
+    
+    leaderScores = [[NSMutableArray alloc] initWithObjects:
+               [oneDict objectForKey:@"score"],
+               [twoDict objectForKey:@"score"],
+               [threeDict objectForKey:@"score"],
+               [fourDict objectForKey:@"score"],
+               [fiveDict objectForKey:@"score"],
+               [sixDict objectForKey:@"score"],
+               [sevenDict objectForKey:@"score"],
+               [eightDict objectForKey:@"score"],
+               nil];
+    
+    NSLog(@"leaders = %@", [leaders description]);
+    NSLog(@"leaderScores = %@", [leaderScores description]);
+    NSLog(@"current lb = %@", [currentLb description]);
+}
+
+- (void)setLowestScore:(int)lowestScore
+{
+    lowestScoreInLb = lowestScore;
+    NSLog(@"set lowest score to %i", lowestScoreInLb);
+}
+
+- (void)setOneDict:(NSDictionary *)lb
+{
+    oneDict = [lb mutableCopy];
+    
+    for (id key in oneDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [oneDict valueForKey:key]);
+    }
+}
+- (void)setTwoDict:(NSDictionary *)lb
+{
+    twoDict = [lb mutableCopy];
+    
+    for (id key in twoDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [twoDict valueForKey:key]);
+    }
+}
+- (void)setThreeDict:(NSDictionary *)lb
+{
+    threeDict = [lb mutableCopy];
+    
+    for (id key in threeDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [threeDict valueForKey:key]);
+    }
+}
+- (void)setFourDict:(NSDictionary *)lb
+{
+    fourDict = [lb mutableCopy];
+    
+    for (id key in fourDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [fourDict valueForKey:key]);
+    }
+}
+- (void)setFiveDict:(NSDictionary *)lb
+{
+    fiveDict = [lb mutableCopy];
+    
+    for (id key in fiveDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [fiveDict valueForKey:key]);
+    }
+}
+- (void)setSixDict:(NSDictionary *)lb
+{
+    sixDict = [lb mutableCopy];
+    
+    for (id key in sixDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [sixDict valueForKey:key]);
+    }
+}
+- (void)setSevenDict:(NSDictionary *)lb
+{
+    sevenDict = [lb mutableCopy];
+    
+    for (id key in sevenDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [sevenDict valueForKey:key]);
+    }
+}
+- (void)setEightDict:(NSDictionary *)lb
+{
+    eightDict = [lb mutableCopy];
+    
+    for (id key in eightDict)
+    {
+        NSLog(@"key=%@, value=%@", key, [eightDict valueForKey:key]);
+    }
 }
 
 - (void)getLeaderboardFromFB
 {
-    
-    [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    Firebase *eightRef = [lbRef childByAppendingPath:@"eight"];
+    [eightRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
-        [self setLeaderboard:snapshot.value[@"leaders"]];
+        // extra stuff because is lowest rank in leaderboard
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        [self setLowestScore:[snapshot.value[@"score"] intValue]];
+        
+        // update global 8th place dict
+       [self setEightDict: @{
+                      @"username":snapshot.value[@"username"],
+                      @"uuid":snapshot.value[@"uuid"],
+                      @"score":snapshot.value[@"score"]
+                      }];
     }];
+    
+    Firebase *sevenRef = [lbRef childByAppendingPath:@"seven"];
+    [sevenRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        
+        [self setSevenDict: @{
+                                 @"username":snapshot.value[@"username"],
+                                 @"uuid":snapshot.value[@"uuid"],
+                                 @"score":snapshot.value[@"score"]
+                                 }];
+    }];
+    
+    Firebase *sixRef = [lbRef childByAppendingPath:@"six"];
+    [sixRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        
+        [self setSixDict: @{
+                              @"username":snapshot.value[@"username"],
+                              @"uuid":snapshot.value[@"uuid"],
+                              @"score":snapshot.value[@"score"]
+                              }];
 
- 
-    /* // BELOW RESETS THE LEADERBOARD TO RANDOS
+    }];
+    
+    
+    Firebase *fiveRef = [lbRef childByAppendingPath:@"five"];
+    [fiveRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        
+        [self setFiveDict: @{
+                              @"username":snapshot.value[@"username"],
+                              @"uuid":snapshot.value[@"uuid"],
+                              @"score":snapshot.value[@"score"]
+                              }];
+    }];
+    
+    Firebase *fourRef = [lbRef childByAppendingPath:@"four"];
+    [fourRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        
+        [self setFourDict: @{
+                              @"username":snapshot.value[@"username"],
+                              @"uuid":snapshot.value[@"uuid"],
+                              @"score":snapshot.value[@"score"]
+                              }];
+    }];
+    
+    Firebase *threeRef = [lbRef childByAppendingPath:@"three"];
+    [threeRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        
+        [self setThreeDict: @{
+                              @"username":snapshot.value[@"username"],
+                              @"uuid":snapshot.value[@"uuid"],
+                              @"score":snapshot.value[@"score"]
+                              }];
+    }];
+    
+    Firebase *twoRef = [lbRef childByAppendingPath:@"two"];
+    [twoRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        
+        [self setTwoDict: @{
+                              @"username":snapshot.value[@"username"],
+                              @"uuid":snapshot.value[@"uuid"],
+                              @"score":snapshot.value[@"score"]
+                              }];
+    }];
+    
+    Firebase *oneRef = [lbRef childByAppendingPath:@"one"];
+    [oneRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
+        NSLog(@"score: %@", snapshot.value[@"score"]);
+        
+        [self setOneDict: @{
+                              @"username":snapshot.value[@"username"],
+                              @"uuid":snapshot.value[@"uuid"],
+                              @"score":snapshot.value[@"score"]
+                              }];
+    }];
+    
+
+ /*
+     // BELOW RESETS THE LEADERBOARD TO RANDOS
      Firebase *leadersRef = [myRootRef childByAppendingPath: @"leaders"];
     NSDictionary *oneDict = @{
                                   @"uuid": @"0000000",
@@ -904,17 +1115,17 @@
     
     
     NSDictionary *tempLeaders = @{
-                                 @"1": oneDict,
-                                 @"2": twoDict,
-                                 @"3": threeDict,
-                                 @"4": fourDict,
-                                 @"5": fiveDict,
-                                 @"6": sixDict,
-                                 @"7": sevenDict,
-                                 @"8": eightDict,
+                                 @"one": oneDict,
+                                 @"two": twoDict,
+                                 @"three": threeDict,
+                                 @"four": fourDict,
+                                 @"five": fiveDict,
+                                 @"six": sixDict,
+                                 @"seven": sevenDict,
+                                 @"eight": eightDict,
                                  };
     [leadersRef setValue: tempLeaders];
-     */
+    */
 }
 
 //////////////////////////////////////////////////////////

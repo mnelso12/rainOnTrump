@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <iAd/iAd.h>
-#import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
 
 @interface ViewController : UIViewController<ADBannerViewDelegate, UIAlertViewDelegate>
@@ -50,6 +49,14 @@
     BOOL isPaused;
     NSMutableDictionary *currentLb;
     int lowestScoreInLb;
+    NSMutableDictionary *oneDict;
+    NSMutableDictionary *twoDict;
+    NSMutableDictionary *threeDict;
+    NSMutableDictionary *fourDict;
+    NSMutableDictionary *fiveDict;
+    NSMutableDictionary *sixDict;
+    NSMutableDictionary *sevenDict;
+    NSMutableDictionary *eightDict;
     
     int trumpState; 
     
