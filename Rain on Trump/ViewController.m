@@ -390,6 +390,12 @@
     
     isPaused = YES;
     
+    count = 4000; // TODO DELETE THIS, only for testing!!!
+    if ([self shouldUpdateLeaderboard])
+    {
+        [self updateLbWithThisUser];
+    }
+    
     
     
     leaderboard = [[UIView alloc] initWithFrame:CGRectMake(sw*.05, sh*.05, sw*.9, sh - 90)];
@@ -845,8 +851,162 @@
         }
 }
 
+
+// leaderboard
+
+- (bool)shouldUpdateLeaderboard
+{
+    if (count > lowestScoreInLb)
+    {
+        // gotta make sure leaderboard hasn't changed since then
+        [self getLeaderboardFromFB];
+        [self setLeaderboardValues];
+        
+        if (count > lowestScoreInLb)
+        {
+            NSLog(@"should update leaderboard with this user's info");
+            return true;
+        }
+    }
+    NSLog(@"should NOT update leaderboard with this user's info");
+    return false;
+}
+
+- (void)updateLbWithThisUser
+{
+    NSMutableDictionary *newLb = [[NSMutableDictionary alloc] initWithDictionary:currentLb];
+    
+    NSDictionary *thisUserInfo = @{
+                                   @"username":username,
+                                   @"uuid":uuid,
+                                   @"score":[NSString stringWithFormat:@"%i",count]
+                                   };
+    
+    int i = 1; // new rank of this user
+    id importantKey;
+    for (id key in currentLb) // start at top of leaderboard and go down, comparing scores
+    {
+        
+        if (count > [[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", key]] intValue])
+        {
+            importantKey = key;
+            break;
+        }
+        
+        //NSLog(@"key = %@", [key description]);
+        
+        i++;
+    }
+    
+    NSLog(@"should put this user in spot %i", i);
+    
+    // THIS CHUNK WORKS YAY!
+    int j = 1;
+    NSMutableDictionary *prevDict;
+    for (id key in currentLb)
+    {
+        if (key == importantKey) //if (j == i) // found the replacement spot for this user
+        {
+            NSLog(@"changing spot now");
+            [newLb setObject:thisUserInfo forKey:key];
+        }
+        else if ([self isKeyGreaterThan:key withSecondKey:importantKey]) //(j > (i+1)) // objects below the list from this user must be lowered one rank
+        {
+            NSLog(@"moving lower one down");
+            prevDict = [@{
+                          @"score":[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", [self prevKey:key]]],
+                          @"uuid":[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.uuid", [self prevKey:key]]],
+                          @"username":[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.username", [self prevKey:key]]]
+                          } mutableCopy];
+            
+            [newLb setObject:prevDict forKey:key];
+        }
+        else
+        {
+            NSLog(@"not yet");
+        }
+    
+        j++;
+    }
+    
+    
+    NSLog(@"newLb right before sending %@", [newLb description]);
+        // TODO this part doesn't
+    [myRootRef setValue:newLb forKey:@"leaders"];
+    
+    
+    /*
+    if (i == 1) // error checking
+    {
+        NSLog(@"ERROR! in updateLbWithThisUser, thought we should update lb with this user but turns out their score wasn't high enough");
+        return;
+    }
+*/
+
+}
+
+- (bool)isKeyGreaterThan:(id)first withSecondKey:(id)second
+{
+    NSArray *words = [[NSArray alloc] initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", nil];
+    
+    if ([words indexOfObject:first] > [words indexOfObject:second])
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+- (NSString *)prevKey:(NSString *)key
+{
+    if ([key isEqualToString:@"one"])
+    {
+        NSLog(@"ERROR IN PREVKEY method!!!");
+        return @"";
+    }
+    else if ([key isEqualToString:@"two"])
+    {
+        return @"one";
+    }
+    else if ([key isEqualToString:@"three"])
+    {
+        return @"two";
+    }
+    else if ([key isEqualToString:@"four"])
+    {
+        return @"three";
+    }
+    else if ([key isEqualToString:@"five"])
+    {
+        return @"four";
+    }
+    else if ([key isEqualToString:@"six"])
+    {
+        return @"five";
+    }
+    else if ([key isEqualToString:@"seven"])
+    {
+        return @"six";
+    }
+    else if ([key isEqualToString:@"eight"])
+    {
+        return @"seven";
+    }
+    return @"eight"; // issue
+}
+
+
+- (void)sendUpdatedLbBack
+{
+        // TODO
+}
+
 - (void)setLeaderboardValues
 {
+    // TODO add check to see if oneDict is null
     NSLog(@"one = %@", [oneDict description]);
     currentLb = [@{
                   @"one":oneDict,
