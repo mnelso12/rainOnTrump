@@ -390,11 +390,24 @@
     
     isPaused = YES;
     
-    count = 4000; // TODO DELETE THIS, only for testing!!!
+    //count = 1314;
+    //count = 6400; // TODO DELETE THIS, only for testing!!!
     if ([self shouldUpdateLeaderboard])
     {
-        [self updateLbWithThisUser];
+        if ([self isUserAlreadyOnLb])
+        {
+            NSLog(@"user is already on LB, updating position");
+            [self updateUsersPositionOnLb];
+        }
+        else
+        {
+            NSLog(@"user is NOT already on LB, putting them on it now");
+            [self updateLbWithThisUser];
+        }
     }
+    
+    [self getLeaderboardFromFB];
+    [self setLeaderboardValues]; // TODO this still isn't the most updated version of the leaderboard?
     
     
     
@@ -677,9 +690,25 @@
     
     
     [self getLeaderboardFromFB];
+    
+    if ([self isUsernameNull])
+    {
+        username = @"Anonymous";
+        [self addAlertView];
+    }
 }
 
-
+- (bool)isUsernameNull
+{
+    if ([username length] == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 /////////// FIREBASE STUFF ////////////////////////
 
@@ -874,29 +903,39 @@
 
 - (void)updateLbWithThisUser
 {
+    NSLog(@"currentLB: %@", [currentLb description]);
     NSMutableDictionary *newLb = [[NSMutableDictionary alloc] initWithDictionary:currentLb];
+    NSLog(@"got here 0");
     
+    if ([self isUsernameNull])
+    {
+        username = @"Anonymous";
+        [self addAlertView];
+    }
+    
+    NSLog(@"username: %@, uuid: %@, count:%i", username, uuid, count);
     NSDictionary *thisUserInfo = @{
                                    @"username":username,
                                    @"uuid":uuid,
                                    @"score":[NSString stringWithFormat:@"%i",count]
                                    };
     
+     NSLog(@"got here 1");
+     NSArray *words = [[NSArray alloc] initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", nil];
+    
     int i = 1; // new rank of this user
     id importantKey;
-    for (id key in currentLb) // start at top of leaderboard and go down, comparing scores
+    for (NSString *key in words) // start at top of leaderboard and go down, comparing scores
     {
-        
-        if (count > [[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", key]] intValue])
+         NSLog(@"got here 2");
+        if (count > [[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", (id)key]] intValue])
         {
             importantKey = key;
             break;
         }
-        
-        //NSLog(@"key = %@", [key description]);
-        
         i++;
     }
+     NSLog(@"got here 3");
     
     NSLog(@"should put this user in spot %i", i);
     
@@ -932,7 +971,7 @@
     
     NSLog(@"newLb right before sending %@", [newLb description]);
         // TODO this part doesn't
-    [myRootRef setValue:newLb forKey:@"leaders"];
+    [lbRef updateChildValues:newLb];
     
     
     /*
@@ -998,11 +1037,129 @@
     return @"eight"; // issue
 }
 
-
-- (void)sendUpdatedLbBack
+- (void)updateUsersPositionOnLb // TODO this method just doesn't work
 {
-        // TODO
+    // find user's old spot in the leaderboard
+    id usersPrevKey;
+    for (id k in currentLb)
+    {
+        if ([[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.uuid", k]] intValue])
+        {
+            usersPrevKey = k;
+        }
+    }
+    
+    
+    NSMutableDictionary *newLb = [[NSMutableDictionary alloc] initWithDictionary:currentLb];
+    
+    NSDictionary *thisUserInfo = @{
+                                   @"username":username,
+                                   @"uuid":uuid,
+                                   @"score":[NSString stringWithFormat:@"%i",count]
+                                   };
+    
+    NSArray *words = [[NSArray alloc] initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", nil];
+    
+    int i = 1; // new rank of this user
+    id newKey;
+    for (NSString *key in words) // start at top of leaderboard and go down, comparing scores
+    {
+        if (count > [[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", (id)key]] intValue])
+        {
+            newKey = key;
+            break;
+        }
+        i++;
+    }
+    
+    NSLog(@"should put this user in spot %i", i);
+    
+    
+    
+    // say the 5th place user should now be the 3rd place user. The above part finds the new and old spots (5 and 3). Below loops through the dict and finds the other users in that range 3rd-5th, aka 3rd user and 4th user, and moves them each down one spot. Then replace the 3rd place spot with the current user.
+    NSMutableDictionary *prevDict;
+    for (id key in currentLb) // TODO this doesn't work
+    {
+        if ([self isKeyBetweenTheseKeys:key withLower:usersPrevKey withUpper:newKey])
+        {
+                NSLog(@"moving lower one down");
+                prevDict = [@{
+                          @"score":[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", [self prevKey:key]]],
+                          @"uuid":[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.uuid", [self prevKey:key]]],
+                          @"username":[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.username", [self prevKey:key]]]
+                          } mutableCopy];
+            
+                [newLb setObject:prevDict forKey:key];
+        }
+        else
+        {
+            NSLog(@"not yet");
+        }
+        
+    }
+    
+    [newLb setObject:thisUserInfo forKey:newKey]; // put the current user in correct spot
+    
+    
+    NSLog(@"newLb right before sending %@", [newLb description]);
+    // TODO this part doesn't
+    [lbRef updateChildValues:newLb];
+    
+    
+    /*
+     if (i == 1) // error checking
+     {
+     NSLog(@"ERROR! in updateLbWithThisUser, thought we should update lb with this user but turns out their score wasn't high enough");
+     return;
+     }
+     */
+    
 }
+
+- (bool)isKeyBetweenTheseKeys:(id)key withLower:(id)low withUpper:(id)high // half-inclusive, 3-5 range is high:3, low:5
+{
+    NSArray *words = [[NSArray alloc] initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", nil];
+    if (([words indexOfObject:key] < [words indexOfObject:low]) && ([words indexOfObject:key] >= [words indexOfObject:high]))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+- (bool)isUserAlreadyOnLb
+{
+    if ([oneDict count] == 0)
+    {
+        NSLog(@"ERROR! oneDict is null, hasn't been set yet, so couldn't check if this user is already on lb or not");
+        return false;
+    }
+    
+    NSArray *uuids = [[NSArray alloc] initWithObjects:
+               [oneDict objectForKey:@"uuid"],
+               [twoDict objectForKey:@"uuid"],
+               [threeDict objectForKey:@"uuid"],
+               [fourDict objectForKey:@"uuid"],
+               [fiveDict objectForKey:@"uuid"],
+               [sixDict objectForKey:@"uuid"],
+               [sevenDict objectForKey:@"uuid"],
+               [eightDict objectForKey:@"uuid"],
+               nil];
+
+    
+    if ([uuids containsObject:uuid])
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
 
 - (void)setLeaderboardValues
 {
@@ -1127,6 +1284,7 @@
 
 - (void)getLeaderboardFromFB
 {
+ 
     Firebase *eightRef = [lbRef childByAppendingPath:@"eight"];
     [eightRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"got this data back:\n %@ -> %@", snapshot.key, snapshot.value);
@@ -1227,7 +1385,7 @@
                               @"score":snapshot.value[@"score"]
                               }];
     }];
-    
+  
 
  /*
      // BELOW RESETS THE LEADERBOARD TO RANDOS
@@ -1285,7 +1443,7 @@
                                  @"eight": eightDict,
                                  };
     [leadersRef setValue: tempLeaders];
-    */
+   */
 }
 
 //////////////////////////////////////////////////////////
