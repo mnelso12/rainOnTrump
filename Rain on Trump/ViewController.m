@@ -1039,16 +1039,17 @@
 
 - (void)updateUsersPositionOnLb // TODO this method just doesn't work
 {
-    // find user's old spot in the leaderboard
+    // find user's old spot in the leaderboard - WRONG
     id usersPrevKey;
     for (id k in currentLb)
     {
-        if ([[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.uuid", k]] intValue])
+        if ([[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.uuid", k]] isEqualToString:uuid])
         {
             usersPrevKey = k;
         }
     }
     
+    NSLog(@"users prev key: %@", usersPrevKey);
     
     NSMutableDictionary *newLb = [[NSMutableDictionary alloc] initWithDictionary:currentLb];
     
@@ -1064,7 +1065,7 @@
     id newKey;
     for (NSString *key in words) // start at top of leaderboard and go down, comparing scores
     {
-        if (count > [[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", (id)key]] intValue])
+        if (count >= [[currentLb valueForKeyPath:[NSString stringWithFormat:@"%@.score", (id)key]] intValue]) // changed from > to >=
         {
             newKey = key;
             break;
@@ -1078,7 +1079,7 @@
     
     // say the 5th place user should now be the 3rd place user. The above part finds the new and old spots (5 and 3). Below loops through the dict and finds the other users in that range 3rd-5th, aka 3rd user and 4th user, and moves them each down one spot. Then replace the 3rd place spot with the current user.
     NSMutableDictionary *prevDict;
-    for (id key in currentLb) // TODO this doesn't work
+    for (id key in currentLb) // TODO this doesn't work, maybe okay?
     {
         if ([self isKeyBetweenTheseKeys:key withLower:usersPrevKey withUpper:newKey])
         {
@@ -1121,10 +1122,12 @@
     NSArray *words = [[NSArray alloc] initWithObjects:@"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", nil];
     if (([words indexOfObject:key] < [words indexOfObject:low]) && ([words indexOfObject:key] >= [words indexOfObject:high]))
     {
+        NSLog(@"found that %@ is between %@ and %@", key, low, high);
         return true;
     }
     else
     {
+        NSLog(@"found that %@ is not between %@ and %@", key, low, high);
         return false;
     }
 }
@@ -1387,7 +1390,7 @@
     }];
   
 
- /*
+/*
      // BELOW RESETS THE LEADERBOARD TO RANDOS
      Firebase *leadersRef = [myRootRef childByAppendingPath: @"leaders"];
     NSDictionary *oneDict = @{
@@ -1443,7 +1446,8 @@
                                  @"eight": eightDict,
                                  };
     [leadersRef setValue: tempLeaders];
-   */
+   
+    */
 }
 
 //////////////////////////////////////////////////////////
