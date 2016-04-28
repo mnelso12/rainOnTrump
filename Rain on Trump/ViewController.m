@@ -442,7 +442,7 @@
         
         UILabel *tempScore = [[UILabel alloc] initWithFrame:CGRectMake(15, 50+(30*i), sw*.8, 30)];
         [tempScore setTextColor:[UIColor whiteColor]];
-        NSString *scoreString = [leaderScores objectAtIndex:i];
+        NSString *scoreString = [self addCommas:[leaderScores objectAtIndex:i]];
         [tempScore setText:scoreString];
         [tempScore setFont:[UIFont fontWithName:@"Verdana" size:18]];
         [tempScore setTextAlignment:NSTextAlignmentRight];
